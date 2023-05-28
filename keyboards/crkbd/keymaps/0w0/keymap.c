@@ -57,17 +57,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 
-  [3] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, _______,  KC_BSPC,     KC_ENT, _______, KC_RALT
-                                      //`--------------------------'  `--------------------------'
-  )
 };
 
 #ifdef OLED_ENABLE
@@ -178,17 +167,64 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 /* combos */
 enum combos {
     SDF_ENTER,
+    XCV_ESC,
     SEF_CAPS_WORD,
+    FE_I,
+    SE_UNDS,
+    SR_MINS,
+    DF_J,
+    SD_K,
+    AF_P,
+    AD_H,
+    FS_L,
+    WE_O,
+    ER_U,
+    RE_Y,
+    CV_N,
+    XV_M,
+    XC_COMMA,
+    AS_DOT,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
-const uint16_t PROGMEM sdf_combo[] = {LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), COMBO_END};
+const uint16_t PROGMEM sdf_ent_combo[] = {LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), COMBO_END};
+const uint16_t PROGMEM xcv_esc_combo[] = {LALT_T(KC_X), LCTL_T(KC_C), COMBO_END};
 const uint16_t PROGMEM sef_caps_word_combo[] = {LALT_T(KC_S), KC_E, LCTL_T(KC_F), COMBO_END};
+const uint16_t PROGMEM fe_i_combo[] = {LCTL_T(KC_F), KC_E, COMBO_END};
+const uint16_t PROGMEM se_unds_combo[] = {LALT_T(KC_S), KC_E, COMBO_END};
+const uint16_t PROGMEM sr_mins_combo[] = {LALT_T(KC_S), KC_R, COMBO_END};
+const uint16_t PROGMEM df_j_combo[] = {LSFT_T(KC_D), LCTL_T(KC_F), COMBO_END};
+const uint16_t PROGMEM sd_k_combo[] = {LALT_T(KC_S), LSFT_T(KC_D), COMBO_END};
+const uint16_t PROGMEM af_p_combo[] = {LGUI_T(KC_A), LCTL_T(KC_F), COMBO_END};
+const uint16_t PROGMEM ad_h_combo[] = {LGUI_T(KC_A), LSFT_T(KC_D), COMBO_END};
+const uint16_t PROGMEM fs_l_combo[] = {LCTL_T(KC_F), LALT_T(KC_S), COMBO_END};
+const uint16_t PROGMEM we_o_combo[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM er_u_combo[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM cv_n_combo[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM xv_m_combo[] = {KC_X, KC_V, COMBO_END};
+const uint16_t PROGMEM xc_comma_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM as_dot_combo[] = {LGUI_T(KC_A), LALT_T(KC_S), COMBO_END};
 
 combo_t key_combos[] = {
-    [SDF_ENTER] = COMBO(sdf_combo, KC_ENT),
-    [SEF_CAPS_WORD] = COMBO(sef_caps_word_combo, KC_NO)
+    [SDF_ENTER] = COMBO(sdf_ent_combo, KC_ENT),
+    [XCV_ESC] = COMBO(xcv_esc_combo, KC_ESC),
+    [SEF_CAPS_WORD] = COMBO(sef_caps_word_combo, KC_NO),
+    [FE_I] = COMBO(fe_i_combo, KC_I),
+    [SE_UNDS] = COMBO(se_unds_combo, KC_UNDS),
+    [SR_MINS] = COMBO(sr_mins_combo, KC_MINS),
+    [DF_J] = COMBO(df_j_combo, KC_J),
+    [SD_K] = COMBO(sd_k_combo, KC_K),
+    [AF_P] = COMBO(af_p_combo, KC_P),
+    [AD_H] = COMBO(ad_h_combo, KC_H),
+    [FS_L] = COMBO(fs_l_combo, KC_L),
+    [WE_O] = COMBO(we_o_combo, KC_O),
+    [ER_U] = COMBO(er_u_combo, KC_U),
+    [RE_Y] = COMBO(cv_n_combo, KC_Y),
+    [CV_N] = COMBO(cv_n_combo, KC_N),
+    [XV_M] = COMBO(xv_m_combo, KC_M),
+    [XC_COMMA] = COMBO(xc_comma_combo, KC_COMM),
+    [AS_DOT] = COMBO(as_dot_combo, KC_DOT),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
