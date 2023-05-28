@@ -178,12 +178,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 /* combos */
 enum combos {
     SDF_ENTER,
+    SEF_CAPS_WORD,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 const uint16_t PROGMEM sdf_combo[] = {LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), COMBO_END};
+const uint16_t PROGMEM sef_caps_word_combo[] = {LALT_T(KC_S), KC_E, LCTL_T(KC_F), COMBO_END};
 
 combo_t key_combos[] = {
-  [SDF_ENTER] = COMBO(sdf_combo, KC_ENT),
+    [SDF_ENTER] = COMBO(sdf_combo, KC_ENT),
+    [SEF_CAPS_WORD] = COMBO(sef_caps_word_combo, KC_NO)
 };
+
+void process_combo_event(uint16_t combo_index, bool pressed) {
+    switch (combo_index) {
+	case SEF_CAPS_WORD:
+	    if (pressed) {
+		caps_word_toggle();
+            }
+	    break;
+    }
+}
