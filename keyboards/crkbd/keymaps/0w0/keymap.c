@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_LSFT, _______, _______, LCTL(KC_LEFT), LCTL(KC_RIGHT), _______,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   LCTL(KC_BSLS),  KC_BSPC,     KC_ENT, _______, KC_RALT
+                                          KC_LGUI,   LCTL(KC_BSLS),  KC_TAB,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -80,6 +80,11 @@ enum combos {
     FE_I,
     SE_UNDS,
     SR_MINS,
+    SG_EQL,
+    SV_PLUS,
+    AE_SCLN,
+    AR_QUOT,
+    AW_COLN,
     DF_J,
     SD_K,
     AF_P,
@@ -92,7 +97,7 @@ enum combos {
     XV_M,
     XC_COMMA,
     AS_DOT,
-    fw_slash,
+    FW_SLASH,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
@@ -104,6 +109,11 @@ const uint16_t PROGMEM sef_caps_word_combo[] = {KC_S, KC_E, KEY_F, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[] = {KEY_F, KC_E, COMBO_END};
 const uint16_t PROGMEM se_unds_combo[] = {KC_S, KC_E, COMBO_END};
 const uint16_t PROGMEM sr_mins_combo[] = {KC_S, KC_R, COMBO_END};
+const uint16_t PROGMEM sg_eql_combo[] = {KC_S, KC_G, COMBO_END};
+const uint16_t PROGMEM sv_plus_combo[] = {KC_S, KC_V, COMBO_END};
+const uint16_t PROGMEM ae_scln_combo[] = {KEY_A, KC_E, COMBO_END};
+const uint16_t PROGMEM ar_quot_combo[] = {KEY_A, KC_R, COMBO_END};
+const uint16_t PROGMEM aw_coln_combo[] = {KEY_A, KC_W, COMBO_END};
 const uint16_t PROGMEM df_j_combo[] = {KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM sd_k_combo[] = {KC_S, KEY_D, COMBO_END};
 const uint16_t PROGMEM af_p_combo[] = {KEY_A, KEY_F, COMBO_END};
@@ -126,6 +136,11 @@ combo_t key_combos[] = {
     [FE_I] = COMBO(fe_i_combo, KC_I),
     [SE_UNDS] = COMBO(se_unds_combo, KC_UNDS),
     [SR_MINS] = COMBO(sr_mins_combo, KC_MINS),
+    [SG_EQL] = COMBO(sg_eql_combo, KC_EQL),
+    [SV_PLUS] = COMBO(sv_plus_combo, KC_PLUS),
+    [AE_SCLN] = COMBO(ae_scln_combo, KC_SCLN),
+    [AR_QUOT] = COMBO(ar_quot_combo, KC_QUOT),
+    [AW_COLN] = COMBO(aw_coln_combo, KC_COLN),
     [DF_J] = COMBO(df_j_combo, KC_J),
     [SD_K] = COMBO(sd_k_combo, KC_K),
     [AF_P] = COMBO(af_p_combo, KC_P),
@@ -138,7 +153,7 @@ combo_t key_combos[] = {
     [XV_M] = COMBO(xv_m_combo, KC_M),
     [XC_COMMA] = COMBO(xc_comma_combo, KC_COMM),
     [AS_DOT] = COMBO(as_dot_combo, KC_DOT),
-    [fw_slash] = COMBO(fw_slash_combo, KC_SLSH),
+    [FW_SLASH] = COMBO(fw_slash_combo, KC_SLSH),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
