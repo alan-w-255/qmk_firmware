@@ -19,16 +19,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include <stdio.h>
 
+#define KEY_D LSFT_T(KC_D)
+#define KEY_F LT(2, KC_F)
+#define KEY_J LT(1, KC_J)
+#define KEY_K LSFT_T(KC_K)
+#define KEY_A LT(1, KC_A)
+#define KEY_THUMB_L_1 RGUI_T(KC_BSPC)
+#define KEY_THUMB_L_2 LCTL_T(KC_SPC)
+#define KEY_THUMB_L_3 LALT_T(KC_LEFT)
+#define KEY_THUMB_R_1 RGUI_T(KC_ENT)
+#define KEY_THUMB_R_2 RCTL_T(KC_TAB)
+#define KEY_THUMB_R_3 RALT_T(KC_RGHT)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_ESC, LGUI_T(KC_A), LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), KC_G,   KC_H, RCTL_T(KC_J), RSFT_T(KC_K), RALT_T(KC_L), RGUI_T(KC_SCLN), KC_QUOT,
+       KC_ESC, KEY_A, KC_S, KEY_D, KEY_F, KC_G,   KC_H, KEY_J, KEY_K, KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-       MO(1),  LT(2, KC_SPC),  KC_BSPC,    KC_ENT, LT(1, KC_TAB), MO(1)
+       KEY_THUMB_L_3, KEY_THUMB_L_2, KEY_THUMB_L_1, KEY_THUMB_R_1, KEY_THUMB_R_2, KEY_THUMB_R_3
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -51,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LCTL, _______, KC_LEFT, KC_UP, KC_DOWN, KC_RIGHT,                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, _______, _______, _______, _______, _______,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
+       KC_LSFT, _______, _______, LCTL(KC_LEFT), LCTL(KC_RIGHT), _______,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI,   MO(3),  KC_BSPC,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -63,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 enum combos {
     SDF_ENTER,
     XCV_ESC,
-    WER_KEY_LOCK,
+    WER_TAB,
     SEF_CAPS_WORD,
     FE_I,
     SE_UNDS,
@@ -85,31 +97,31 @@ enum combos {
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
-const uint16_t PROGMEM sdf_ent_combo[] = {LALT_T(KC_S), LSFT_T(KC_D), LCTL_T(KC_F), COMBO_END};
-const uint16_t PROGMEM xcv_esc_combo[] = {LALT_T(KC_X), LCTL_T(KC_C), COMBO_END};
-const uint16_t PROGMEM wer_key_lock_combo[] = {KC_W, KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM sef_caps_word_combo[] = {LALT_T(KC_S), KC_E, LCTL_T(KC_F), COMBO_END};
-const uint16_t PROGMEM fe_i_combo[] = {LCTL_T(KC_F), KC_E, COMBO_END};
-const uint16_t PROGMEM se_unds_combo[] = {LALT_T(KC_S), KC_E, COMBO_END};
-const uint16_t PROGMEM sr_mins_combo[] = {LALT_T(KC_S), KC_R, COMBO_END};
-const uint16_t PROGMEM df_j_combo[] = {LSFT_T(KC_D), LCTL_T(KC_F), COMBO_END};
-const uint16_t PROGMEM sd_k_combo[] = {LALT_T(KC_S), LSFT_T(KC_D), COMBO_END};
-const uint16_t PROGMEM af_p_combo[] = {LGUI_T(KC_A), LCTL_T(KC_F), COMBO_END};
-const uint16_t PROGMEM ad_h_combo[] = {LGUI_T(KC_A), LSFT_T(KC_D), COMBO_END};
-const uint16_t PROGMEM fs_l_combo[] = {LCTL_T(KC_F), LALT_T(KC_S), COMBO_END};
+const uint16_t PROGMEM sdf_ent_combo[] = {KC_S, KEY_D, KEY_F, COMBO_END};
+const uint16_t PROGMEM xcv_esc_combo[] = {KC_X, KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM wer_tab[] = {KC_W, KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM sef_caps_word_combo[] = {KC_S, KC_E, KEY_F, COMBO_END};
+const uint16_t PROGMEM fe_i_combo[] = {KEY_F, KC_E, COMBO_END};
+const uint16_t PROGMEM se_unds_combo[] = {KC_S, KC_E, COMBO_END};
+const uint16_t PROGMEM sr_mins_combo[] = {KC_S, KC_R, COMBO_END};
+const uint16_t PROGMEM df_j_combo[] = {KEY_D, KEY_F, COMBO_END};
+const uint16_t PROGMEM sd_k_combo[] = {KC_S, KEY_D, COMBO_END};
+const uint16_t PROGMEM af_p_combo[] = {KEY_A, KEY_F, COMBO_END};
+const uint16_t PROGMEM ad_h_combo[] = {KEY_A, KEY_D, COMBO_END};
+const uint16_t PROGMEM fs_l_combo[] = {KEY_F, KC_S, COMBO_END};
 const uint16_t PROGMEM we_o_combo[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM wr_u_combo[] = {KC_W, KC_R, COMBO_END};
 const uint16_t PROGMEM re_y_combo[] = {KC_R, KC_E, COMBO_END};
 const uint16_t PROGMEM cv_n_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM xv_m_combo[] = {KC_X, KC_V, COMBO_END};
 const uint16_t PROGMEM xc_comma_combo[] = {KC_X, KC_C, COMBO_END};
-const uint16_t PROGMEM as_dot_combo[] = {LGUI_T(KC_A), LALT_T(KC_S), COMBO_END};
-const uint16_t PROGMEM fw_slash_combo[] = {LCTL_T(KC_F), KC_W, COMBO_END};
+const uint16_t PROGMEM as_dot_combo[] = {KEY_A, KC_S, COMBO_END};
+const uint16_t PROGMEM fw_slash_combo[] = {KEY_F, KC_W, COMBO_END};
 
 combo_t key_combos[] = {
     [SDF_ENTER] = COMBO(sdf_ent_combo, KC_ENT),
     [XCV_ESC] = COMBO(xcv_esc_combo, KC_ESC),
-    [WER_KEY_LOCK] = COMBO(wer_key_lock_combo, QK_LOCK),
+    [WER_TAB] = COMBO(wer_tab, KC_TAB),
     [SEF_CAPS_WORD] = COMBO(sef_caps_word_combo, KC_NO),
     [FE_I] = COMBO(fe_i_combo, KC_I),
     [SE_UNDS] = COMBO(se_unds_combo, KC_UNDS),
