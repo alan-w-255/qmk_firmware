@@ -59,13 +59,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
+       _______, KC_EXLM, KC_LEFT, KC_RIGHT,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, _______, KC_LEFT, KC_UP, KC_DOWN, KC_RIGHT,                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
+      KC_LCTL,    KC_AT, KC_UP, KC_DOWN, KC_DOWN, KC_RIGHT,                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_LSFT, _______, _______, LCTL(KC_LEFT), LCTL(KC_RIGHT), _______,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
+       KC_LSFT, KC_HASH, _______, LCTL(KC_LEFT), LCTL(KC_RIGHT), _______,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   LCTL(KC_BSLS),  KC_TAB,     KC_ENT, _______, KC_RALT
+                                          KC_LGUI,   _______,  KC_TAB,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -98,6 +98,7 @@ enum combos {
     XC_COMMA,
     AS_DOT,
     FW_SLASH,
+    QW_BSLASH,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
@@ -127,6 +128,7 @@ const uint16_t PROGMEM xv_m_combo[] = {KC_X, KC_V, COMBO_END};
 const uint16_t PROGMEM xc_comma_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM as_dot_combo[] = {KEY_A, KC_S, COMBO_END};
 const uint16_t PROGMEM fw_slash_combo[] = {KEY_F, KC_W, COMBO_END};
+const uint16_t PROGMEM qw_bslash_combo[] = {KC_Q, KC_W, COMBO_END};
 
 combo_t key_combos[] = {
     [SDF_ENTER] = COMBO(sdf_ent_combo, KC_ENT),
@@ -154,6 +156,7 @@ combo_t key_combos[] = {
     [XC_COMMA] = COMBO(xc_comma_combo, KC_COMM),
     [AS_DOT] = COMBO(as_dot_combo, KC_DOT),
     [FW_SLASH] = COMBO(fw_slash_combo, KC_SLSH),
+    [QW_BSLASH] = COMBO(qw_bslash_combo, KC_BSLS)
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
