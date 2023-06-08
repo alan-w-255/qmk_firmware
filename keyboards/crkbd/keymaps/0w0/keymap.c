@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        _______, KC_EXLM, KC_LEFT, KC_RIGHT,  KC_DLR, KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,    KC_AT, KC_UP, KC_DOWN, KC_DOWN, KC_RIGHT,                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
+      KC_LCTL,    KC_AT, KC_UP, KC_DOWN, _______, _______,                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        KC_LSFT, KC_HASH, _______, LCTL(KC_LEFT), LCTL(KC_RIGHT), _______,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -77,6 +77,7 @@ enum combos {
     XCV_ESC,
     WER_TAB,
     SEF_CAPS_WORD,
+    FWE_OS_SHIFT,
     FE_I,
     SE_UNDS,
     SR_MINS,
@@ -107,6 +108,7 @@ const uint16_t PROGMEM sdf_ent_combo[] = {KC_S, KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM xcv_esc_combo[] = {KC_X, KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM wer_tab[] = {KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM sef_caps_word_combo[] = {KC_S, KC_E, KEY_F, COMBO_END};
+const uint16_t PROGMEM fwe_os_shift_combo[] = {KEY_F, KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[] = {KEY_F, KC_E, COMBO_END};
 const uint16_t PROGMEM se_unds_combo[] = {KC_S, KC_E, COMBO_END};
 const uint16_t PROGMEM sr_mins_combo[] = {KC_S, KC_R, COMBO_END};
@@ -135,6 +137,7 @@ combo_t key_combos[] = {
     [XCV_ESC] = COMBO(xcv_esc_combo, KC_ESC),
     [WER_TAB] = COMBO(wer_tab, KC_TAB),
     [SEF_CAPS_WORD] = COMBO(sef_caps_word_combo, KC_NO),
+    [FWE_OS_SHIFT] = COMBO(fwe_os_shift_combo, OSM(MOD_LSFT)),
     [FE_I] = COMBO(fe_i_combo, KC_I),
     [SE_UNDS] = COMBO(se_unds_combo, KC_UNDS),
     [SR_MINS] = COMBO(sr_mins_combo, KC_MINS),
