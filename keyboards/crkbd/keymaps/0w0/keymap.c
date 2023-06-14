@@ -86,6 +86,7 @@ enum combos {
     AE_SCLN,
     AR_QUOT,
     AW_COLN,
+    FQ_GRV,
     DF_J,
     SD_K,
     AF_P,
@@ -117,6 +118,7 @@ const uint16_t PROGMEM sv_plus_combo[] = {KC_S, KC_V, COMBO_END};
 const uint16_t PROGMEM ae_scln_combo[] = {KEY_A, KC_E, COMBO_END};
 const uint16_t PROGMEM ar_quot_combo[] = {KEY_A, KC_R, COMBO_END};
 const uint16_t PROGMEM aw_coln_combo[] = {KEY_A, KC_W, COMBO_END};
+const uint16_t PROGMEM fq_grv_combo[] = {KEY_F, KC_Q, COMBO_END};
 const uint16_t PROGMEM df_j_combo[] = {KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM sd_k_combo[] = {KC_S, KEY_D, COMBO_END};
 const uint16_t PROGMEM af_p_combo[] = {KEY_A, KEY_F, COMBO_END};
@@ -146,6 +148,7 @@ combo_t key_combos[] = {
     [AE_SCLN] = COMBO(ae_scln_combo, KC_SCLN),
     [AR_QUOT] = COMBO(ar_quot_combo, KC_QUOT),
     [AW_COLN] = COMBO(aw_coln_combo, KC_COLN),
+    [FQ_GRV] = COMBO(fq_grv_combo, KC_GRV),
     [DF_J] = COMBO(df_j_combo, KC_J),
     [SD_K] = COMBO(sd_k_combo, KC_K),
     [AF_P] = COMBO(af_p_combo, KC_P),
