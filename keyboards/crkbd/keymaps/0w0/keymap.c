@@ -114,6 +114,12 @@ enum combos {
     AS_DOT,
     FW_SLASH,
     QW_BSLASH,
+
+    // 单指 combos
+    RF_LPRN,
+    TG_RPRN,
+    FV_LBRC,
+    GB_RBRC,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
@@ -146,6 +152,10 @@ const uint16_t PROGMEM xc_comma_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM as_dot_combo[] = {KEY_A, KC_S, COMBO_END};
 const uint16_t PROGMEM fw_slash_combo[] = {KEY_F, KC_W, COMBO_END};
 const uint16_t PROGMEM qw_bslash_combo[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM rf_lprn_combo[] = {KC_R, KEY_F, COMBO_END};
+const uint16_t PROGMEM tg_rprn_combo[] = {KC_T, KC_G, COMBO_END};
+const uint16_t PROGMEM fv_lbrc_combo[] = {KEY_F, KC_V, COMBO_END};
+const uint16_t PROGMEM gb_rbrc_combo[] = {KC_G, KC_B, COMBO_END};
 
 combo_t key_combos[] = {
     [SDF_ENTER] = COMBO(sdf_ent_combo, KC_ENT),
@@ -175,7 +185,11 @@ combo_t key_combos[] = {
     [XC_COMMA] = COMBO(xc_comma_combo, KC_COMM),
     [AS_DOT] = COMBO(as_dot_combo, KC_DOT),
     [FW_SLASH] = COMBO(fw_slash_combo, KC_SLSH),
-    [QW_BSLASH] = COMBO(qw_bslash_combo, KC_BSLS)
+    [QW_BSLASH] = COMBO(qw_bslash_combo, KC_BSLS),
+    [RF_LPRN] = COMBO(rf_lprn_combo, KC_LPRN),
+    [TG_RPRN] = COMBO(tg_rprn_combo, KC_RPRN),
+    [FV_LBRC] = COMBO(fv_lbrc_combo, KC_LBRC),
+    [GB_RBRC] = COMBO(gb_rbrc_combo, KC_RBRC),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
