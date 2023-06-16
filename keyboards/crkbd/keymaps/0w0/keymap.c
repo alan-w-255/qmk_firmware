@@ -71,16 +71,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, _______,    KC_1,    KC_2,    KC_3, _______,                      _______, _______, _______, _______, _______, _______,
+      _______, _______,    KC_F1,    KC_F2,    KC_F3, KC_F10,                      KC_F13, KC_F14, KC_F15, KC_F16,   KC_F17, KC_F18,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       _______, _______,   KC_4,    KC_5,    KC_6,    KC_0,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, _______, _______,
+       _______, TO(0),   KC_F4,    KC_F5,    KC_F6, KC_F11,                      KC_F19, KC_F20, KC_F21, KC_F22,   KC_F23, KC_F24,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______,    KC_7,    KC_8,    KC_9, _______,                      _______, _______, _______, _______, _______, _______,
+      _______, _______,    KC_F7,    KC_F8,    KC_F9, KC_F12,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
 					_______, _______, _______,     _______, _______, _______
                                       //`------------------------'  `--------------------------'
   ),
-
 
 };
 
@@ -120,6 +119,9 @@ enum combos {
     TG_RPRN,
     FV_LBRC,
     GB_RBRC,
+
+    // layer switch combos
+    ASDF_LAYER,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
@@ -156,6 +158,7 @@ const uint16_t PROGMEM rf_lprn_combo[] = {KC_R, KEY_F, COMBO_END};
 const uint16_t PROGMEM tg_rprn_combo[] = {KC_T, KC_G, COMBO_END};
 const uint16_t PROGMEM fv_lbrc_combo[] = {KEY_F, KC_V, COMBO_END};
 const uint16_t PROGMEM gb_rbrc_combo[] = {KC_G, KC_B, COMBO_END};
+const uint16_t PROGMEM asdf_layer_combo[] = {KEY_A, KC_S, KEY_D, KEY_F, COMBO_END};
 
 combo_t key_combos[] = {
     [SDF_ENTER] = COMBO(sdf_ent_combo, KC_ENT),
@@ -190,6 +193,7 @@ combo_t key_combos[] = {
     [TG_RPRN] = COMBO(tg_rprn_combo, KC_RPRN),
     [FV_LBRC] = COMBO(fv_lbrc_combo, KC_LBRC),
     [GB_RBRC] = COMBO(gb_rbrc_combo, KC_RBRC),
+    [ASDF_LAYER] = COMBO(asdf_layer_combo, TO(3)),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
