@@ -93,7 +93,7 @@ enum combos {
     FE_I,
     SE_UNDS,
     SR_MINS,
-    SV_PLUS,
+    SV_U,
     AE_SCLN,
     AR_QUOT,
     AW_COLN,
@@ -105,7 +105,7 @@ enum combos {
     DX_H,
     FS_L,
     WE_O,
-    WR_U,
+    WR_PLUS,
     RE_Y,
     CV_N,
     XV_M,
@@ -134,7 +134,7 @@ const uint16_t PROGMEM fwe_os_shift_combo[] = {KEY_F, KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[] = {KEY_F, KC_E, COMBO_END};
 const uint16_t PROGMEM se_unds_combo[] = {KC_S, KC_E, COMBO_END};
 const uint16_t PROGMEM sr_mins_combo[] = {KC_S, KC_R, COMBO_END};
-const uint16_t PROGMEM sv_plus_combo[] = {KC_S, KC_V, COMBO_END};
+const uint16_t PROGMEM sv_u_combo[] = {KC_S, KC_V, COMBO_END};
 const uint16_t PROGMEM ae_scln_combo[] = {KEY_A, KC_E, COMBO_END};
 const uint16_t PROGMEM ar_quot_combo[] = {KEY_A, KC_R, COMBO_END};
 const uint16_t PROGMEM aw_coln_combo[] = {KEY_A, KC_W, COMBO_END};
@@ -146,7 +146,7 @@ const uint16_t PROGMEM fw_p_combo[] = {KEY_F, KC_W, COMBO_END};
 const uint16_t PROGMEM fs_l_combo[] = {KEY_F, KC_S, COMBO_END};
 const uint16_t PROGMEM dx_h_combo[] = {KEY_D, KC_X, COMBO_END};
 const uint16_t PROGMEM we_o_combo[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM wr_u_combo[] = {KC_W, KC_R, COMBO_END};
+const uint16_t PROGMEM wr_plus_combo[] = {KC_W, KC_R, COMBO_END};
 const uint16_t PROGMEM re_y_combo[] = {KC_R, KC_E, COMBO_END};
 const uint16_t PROGMEM cv_n_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM xv_m_combo[] = {KC_X, KC_V, COMBO_END};
@@ -169,7 +169,7 @@ combo_t key_combos[] = {
     [FE_I] = COMBO(fe_i_combo, KC_I),
     [SE_UNDS] = COMBO(se_unds_combo, KC_UNDS),
     [SR_MINS] = COMBO(sr_mins_combo, KC_MINS),
-    [SV_PLUS] = COMBO(sv_plus_combo, KC_PLUS),
+    [SV_U] = COMBO(sv_u_combo, KC_U),
     [AE_SCLN] = COMBO(ae_scln_combo, KC_SCLN),
     [AR_QUOT] = COMBO(ar_quot_combo, KC_QUOT),
     [AW_COLN] = COMBO(aw_coln_combo, KC_COLN),
@@ -181,7 +181,7 @@ combo_t key_combos[] = {
     [FS_L] = COMBO(fs_l_combo, KC_L),
     [DX_H] = COMBO(dx_h_combo, KC_H),
     [WE_O] = COMBO(we_o_combo, KC_O),
-    [WR_U] = COMBO(wr_u_combo, KC_U),
+    [WR_PLUS] = COMBO(wr_plus_combo, KC_PLUS),
     [RE_Y] = COMBO(re_y_combo, KC_Y),
     [CV_N] = COMBO(cv_n_combo, KC_N),
     [XV_M] = COMBO(xv_m_combo, KC_M),
