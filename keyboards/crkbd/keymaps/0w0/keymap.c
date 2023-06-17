@@ -101,8 +101,8 @@ enum combos {
     DF_J,
     DV_EQL,
     SD_K,
-    AF_P,
-    AD_H,
+    FW_P,
+    DX_H,
     FS_L,
     WE_O,
     WR_U,
@@ -110,8 +110,8 @@ enum combos {
     CV_N,
     XV_M,
     XC_COMMA,
-    AS_DOT,
-    FW_SLASH,
+    AF_DOT,
+    DW_SLASH,
     QW_BSLASH,
 
     // 单指 combos
@@ -142,17 +142,17 @@ const uint16_t PROGMEM fq_grv_combo[] = {KEY_F, KC_Q, COMBO_END};
 const uint16_t PROGMEM df_j_combo[] = {KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM dv_eql_combo[] = {KEY_D, KC_V, COMBO_END};
 const uint16_t PROGMEM sd_k_combo[] = {KC_S, KEY_D, COMBO_END};
-const uint16_t PROGMEM af_p_combo[] = {KEY_A, KEY_F, COMBO_END};
-const uint16_t PROGMEM ad_h_combo[] = {KEY_A, KEY_D, COMBO_END};
+const uint16_t PROGMEM fw_p_combo[] = {KEY_F, KC_W, COMBO_END};
 const uint16_t PROGMEM fs_l_combo[] = {KEY_F, KC_S, COMBO_END};
+const uint16_t PROGMEM dx_h_combo[] = {KEY_D, KC_X, COMBO_END};
 const uint16_t PROGMEM we_o_combo[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM wr_u_combo[] = {KC_W, KC_R, COMBO_END};
 const uint16_t PROGMEM re_y_combo[] = {KC_R, KC_E, COMBO_END};
 const uint16_t PROGMEM cv_n_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM xv_m_combo[] = {KC_X, KC_V, COMBO_END};
 const uint16_t PROGMEM xc_comma_combo[] = {KC_X, KC_C, COMBO_END};
-const uint16_t PROGMEM as_dot_combo[] = {KEY_A, KC_S, COMBO_END};
-const uint16_t PROGMEM fw_slash_combo[] = {KEY_F, KC_W, COMBO_END};
+const uint16_t PROGMEM af_dot_combo[] = {KEY_A, KEY_F, COMBO_END};
+const uint16_t PROGMEM dw_slash_combo[] = {KEY_D, KC_W, COMBO_END};
 const uint16_t PROGMEM qw_bslash_combo[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM rf_lprn_combo[] = {KC_R, KEY_F, COMBO_END};
 const uint16_t PROGMEM tg_rprn_combo[] = {KC_T, KC_G, COMBO_END};
@@ -177,17 +177,17 @@ combo_t key_combos[] = {
     [DF_J] = COMBO(df_j_combo, KC_J),
     [DV_EQL] = COMBO(dv_eql_combo, KC_EQL),
     [SD_K] = COMBO(sd_k_combo, KC_K),
-    [AF_P] = COMBO(af_p_combo, KC_P),
-    [AD_H] = COMBO(ad_h_combo, KC_H),
+    [FW_P] = COMBO(fw_p_combo, KC_P),
     [FS_L] = COMBO(fs_l_combo, KC_L),
+    [DX_H] = COMBO(dx_h_combo, KC_H),
     [WE_O] = COMBO(we_o_combo, KC_O),
     [WR_U] = COMBO(wr_u_combo, KC_U),
     [RE_Y] = COMBO(re_y_combo, KC_Y),
     [CV_N] = COMBO(cv_n_combo, KC_N),
     [XV_M] = COMBO(xv_m_combo, KC_M),
     [XC_COMMA] = COMBO(xc_comma_combo, KC_COMM),
-    [AS_DOT] = COMBO(as_dot_combo, KC_DOT),
-    [FW_SLASH] = COMBO(fw_slash_combo, KC_SLSH),
+    [AF_DOT] = COMBO(af_dot_combo, KC_DOT),
+    [DW_SLASH] = COMBO(dw_slash_combo, KC_SLSH),
     [QW_BSLASH] = COMBO(qw_bslash_combo, KC_BSLS),
     [RF_LPRN] = COMBO(rf_lprn_combo, KC_LPRN),
     [TG_RPRN] = COMBO(tg_rprn_combo, KC_RPRN),
