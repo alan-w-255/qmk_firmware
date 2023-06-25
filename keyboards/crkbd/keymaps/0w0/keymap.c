@@ -124,6 +124,10 @@ enum combos {
 
     // layer switch combos
     ASDF_LAYER,
+
+    // function combos
+    ARROW_LR_PGUP,
+    ARROW_UD_PGDN,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
@@ -160,6 +164,8 @@ const uint16_t PROGMEM rf_lprn_combo[] = {KC_R, KEY_F, COMBO_END};
 const uint16_t PROGMEM tg_rprn_combo[] = {KC_T, KC_G, COMBO_END};
 const uint16_t PROGMEM fv_lbrc_combo[] = {KEY_F, KC_V, COMBO_END};
 const uint16_t PROGMEM gb_rbrc_combo[] = {KC_G, KC_B, COMBO_END};
+const uint16_t PROGMEM arrow_lr_pgup_combo[] = {KC_LEFT, KC_RIGHT, COMBO_END};
+const uint16_t PROGMEM arrow_ud_pgdn_combo[] = {KC_UP, KC_DOWN, COMBO_END};
 const uint16_t PROGMEM asdf_layer_combo[] = {KEY_A, KC_S, KEY_D, KEY_F, COMBO_END};
 
 combo_t key_combos[] = {
@@ -196,6 +202,8 @@ combo_t key_combos[] = {
     [FV_LBRC] = COMBO(fv_lbrc_combo, KC_LBRC),
     [GB_RBRC] = COMBO(gb_rbrc_combo, KC_RBRC),
     [ASDF_LAYER] = COMBO(asdf_layer_combo, TO(3)),
+    [ARROW_LR_PGUP] = COMBO(arrow_lr_pgup_combo, KC_PGUP),
+    [ARROW_UD_PGDN] = COMBO(arrow_ud_pgdn_combo, KC_PGDN),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
