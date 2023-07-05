@@ -47,11 +47,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, _______,    KC_1,    KC_2,    KC_3, _______,                      _______, _______, _______, _______, _______, _______,
+      _______,  TO(0),    KC_1,    KC_2,    KC_3, _______,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       _______, _______,   KC_4,    KC_5,    KC_6,    KC_0,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, _______, _______,
+      _______,  KC_DOT,   KC_4,    KC_5,    KC_6,    KC_0,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______,    KC_7,    KC_8,    KC_9, _______,                      _______, _______, _______, _______, _______, _______,
+      _______, KC_COLN,    KC_7,    KC_8,    KC_9, _______,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
 					_______, _______, _______,     _______, _______, _______
                                       //`------------------------'  `--------------------------'
@@ -71,9 +71,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, _______,    KC_F1,    KC_F2,    KC_F3, KC_F10,                      KC_F13, KC_F14, KC_F15, KC_F16,   KC_F17, KC_F18,
+      _______,  TO(0),   KC_F1,   KC_F2,   KC_F3,  KC_F10,                        KC_F13, KC_F14, KC_F15, KC_F16,   KC_F17, KC_F18,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       _______, TO(0),   KC_F4,    KC_F5,    KC_F6, KC_F11,                      KC_F19, KC_F20, KC_F21, KC_F22,   KC_F23, KC_F24,
+      _______, _______,   KC_F4,    KC_F5,    KC_F6, KC_F11,                      KC_F19, KC_F20, KC_F21, KC_F22,   KC_F23, KC_F24,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, _______,    KC_F7,    KC_F8,    KC_F9, KC_F12,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -121,10 +121,15 @@ enum combos {
     TG_RPRN,
     FV_LBRC,
     GB_RBRC,
+    WS_LCBR,
+    ED_RCBR,
     FG_ASTR,
+    RG_AMPR,
+    BF_CIRC,
 
     // layer switch combos
     ASDF_LAYER,
+    WSPS_LAYER,
 
     // function combos
     ARROW_LR_PGUP,
@@ -165,10 +170,15 @@ const uint16_t PROGMEM rf_lprn_combo[] = {KC_R, KEY_F, COMBO_END};
 const uint16_t PROGMEM tg_rprn_combo[] = {KC_T, KC_G, COMBO_END};
 const uint16_t PROGMEM fv_lbrc_combo[] = {KEY_F, KC_V, COMBO_END};
 const uint16_t PROGMEM gb_rbrc_combo[] = {KC_G, KC_B, COMBO_END};
+const uint16_t PROGMEM ws_lcbr_combo[] = {KC_W, KC_S, COMBO_END};
+const uint16_t PROGMEM ed_rcbr_combo[] = {KC_E, KEY_D, COMBO_END};
 const uint16_t PROGMEM fg_astr_combo[] = {KEY_F, KC_G, COMBO_END};
+const uint16_t PROGMEM rg_ampr_combo[] = {KC_R, KC_G, COMBO_END};
+const uint16_t PROGMEM bf_circ_combo[] = {KC_B, KEY_F, COMBO_END};
 const uint16_t PROGMEM arrow_lr_pgup_combo[] = {KC_LEFT, KC_RIGHT, COMBO_END};
 const uint16_t PROGMEM arrow_ud_pgdn_combo[] = {KC_UP, KC_DOWN, COMBO_END};
 const uint16_t PROGMEM asdf_layer_combo[] = {KEY_A, KC_S, KEY_D, KEY_F, COMBO_END};
+const uint16_t PROGMEM wsps_layer_combo[] = {KC_W, KEY_THUMB_L_2, COMBO_END};
 
 combo_t key_combos[] = {
     [SDF_ENTER] = COMBO(sdf_ent_combo, KC_ENT),
@@ -203,8 +213,13 @@ combo_t key_combos[] = {
     [TG_RPRN] = COMBO(tg_rprn_combo, KC_RPRN),
     [FV_LBRC] = COMBO(fv_lbrc_combo, KC_LBRC),
     [GB_RBRC] = COMBO(gb_rbrc_combo, KC_RBRC),
+    [WS_LCBR] = COMBO(ws_lcbr_combo, KC_LCBR),
+    [ED_RCBR] = COMBO(ed_rcbr_combo, KC_RCBR),
     [FG_ASTR] = COMBO(fg_astr_combo, KC_ASTR),
+    [RG_AMPR] = COMBO(rg_ampr_combo, KC_AMPR),
+    [BF_CIRC] = COMBO(bf_circ_combo, KC_CIRC),
     [ASDF_LAYER] = COMBO(asdf_layer_combo, TO(3)),
+    [WSPS_LAYER] = COMBO(wsps_layer_combo, TO(1)),
     [ARROW_LR_PGUP] = COMBO(arrow_lr_pgup_combo, KC_PGUP),
     [ARROW_UD_PGDN] = COMBO(arrow_ud_pgdn_combo, KC_PGDN),
 };
