@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include <stdio.h>
 
-#define KEY_D LSFT_T(KC_D)
+#define KEY_D LT(4, KC_D)
 #define KEY_F LT(2, KC_F)
 #define KEY_J LT(1, KC_J)
 #define KEY_K LSFT_T(KC_K)
@@ -81,6 +81,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`------------------------'  `--------------------------'
   ),
 
+  [4] = LAYOUT_split_3x6_3(
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+      _______, _______, KC_PERC, _______, KC_LCBR, KC_RCBR,                      _______, _______, _______, _______, _______, _______,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______, _______, KC_BSLS, _______, OSM(MOD_LSFT), _______,                      _______, _______, _______, _______, _______, _______,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+					_______, _______, _______,     _______, _______, _______
+                                      //`------------------------'  `--------------------------'
+  ),
+
 };
 
 /* combos */
@@ -116,13 +128,10 @@ enum combos {
     XC_COMMA,
     AF_DOT,
     DW_SLASH,
-    QW_BSLASH,
     RF_LPRN,
     TG_RPRN,
     FV_LBRC,
     GB_RBRC,
-    WS_LCBR,
-    ED_RCBR,
     FG_ASTR,
     RG_AMPR,
     BF_CIRC,
@@ -165,13 +174,10 @@ const uint16_t PROGMEM xv_m_combo[] = {KC_X, KC_V, COMBO_END};
 const uint16_t PROGMEM xc_comma_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM af_dot_combo[] = {KEY_A, KEY_F, COMBO_END};
 const uint16_t PROGMEM dw_slash_combo[] = {KEY_D, KC_W, COMBO_END};
-const uint16_t PROGMEM qw_bslash_combo[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM rf_lprn_combo[] = {KC_R, KEY_F, COMBO_END};
 const uint16_t PROGMEM tg_rprn_combo[] = {KC_T, KC_G, COMBO_END};
 const uint16_t PROGMEM fv_lbrc_combo[] = {KEY_F, KC_V, COMBO_END};
 const uint16_t PROGMEM gb_rbrc_combo[] = {KC_G, KC_B, COMBO_END};
-const uint16_t PROGMEM ws_lcbr_combo[] = {KC_W, KC_S, COMBO_END};
-const uint16_t PROGMEM ed_rcbr_combo[] = {KC_E, KEY_D, COMBO_END};
 const uint16_t PROGMEM fg_astr_combo[] = {KEY_F, KC_G, COMBO_END};
 const uint16_t PROGMEM rg_ampr_combo[] = {KC_R, KC_G, COMBO_END};
 const uint16_t PROGMEM bf_circ_combo[] = {KC_B, KEY_F, COMBO_END};
@@ -208,13 +214,10 @@ combo_t key_combos[] = {
     [XC_COMMA] = COMBO(xc_comma_combo, KC_COMM),
     [AF_DOT] = COMBO(af_dot_combo, KC_DOT),
     [DW_SLASH] = COMBO(dw_slash_combo, KC_SLSH),
-    [QW_BSLASH] = COMBO(qw_bslash_combo, KC_BSLS),
     [RF_LPRN] = COMBO(rf_lprn_combo, KC_LPRN),
     [TG_RPRN] = COMBO(tg_rprn_combo, KC_RPRN),
     [FV_LBRC] = COMBO(fv_lbrc_combo, KC_LBRC),
     [GB_RBRC] = COMBO(gb_rbrc_combo, KC_RBRC),
-    [WS_LCBR] = COMBO(ws_lcbr_combo, KC_LCBR),
-    [ED_RCBR] = COMBO(ed_rcbr_combo, KC_RCBR),
     [FG_ASTR] = COMBO(fg_astr_combo, KC_ASTR),
     [RG_AMPR] = COMBO(rg_ampr_combo, KC_AMPR),
     [BF_CIRC] = COMBO(bf_circ_combo, KC_CIRC),

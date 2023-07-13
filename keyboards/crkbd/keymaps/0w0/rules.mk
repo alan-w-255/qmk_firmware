@@ -7,3 +7,4 @@ LTO_ENABLE      = yes
 SPLIT_KEYBOARD 	= yes
 COMBO_ENABLE    = yes
 CAPS_WORD_ENABLE = yes
+KEY_LOCK_ENABLE = no
