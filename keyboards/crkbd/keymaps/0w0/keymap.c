@@ -85,9 +85,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______, _______, KC_PERC, _______, KC_LCBR, KC_RCBR,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, KC_BSLS, _______, OSM(MOD_LSFT), _______,                      _______, _______, _______, _______, _______, _______,
+      _______, KC_GRV, KC_BSLS, _______, OSM(MOD_LSFT), _______,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
+      _______, _______, _______, _______, KC_QUOT, _______,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
 					_______, _______, _______,     _______, _______, _______
                                       //`------------------------'  `--------------------------'
@@ -101,7 +101,6 @@ enum combos {
     XCV_ESC,
     WER_TAB,
     SEF_CAPS_WORD,
-    FWE_OS_SHIFT,
 
     // alphas combos
     FE_I,
@@ -121,9 +120,7 @@ enum combos {
     SE_UNDS,
     SR_MINS,
     AE_SCLN,
-    AR_QUOT,
     AW_COLN,
-    FQ_GRV,
     WR_PLUS,
     XC_COMMA,
     AF_DOT,
@@ -151,15 +148,12 @@ const uint16_t PROGMEM sdf_ent_combo[] = {KC_S, KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM xcv_esc_combo[] = {KC_X, KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM wer_tab[] = {KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM sef_caps_word_combo[] = {KC_S, KC_E, KEY_F, COMBO_END};
-const uint16_t PROGMEM fwe_os_shift_combo[] = {KEY_F, KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[] = {KEY_F, KC_E, COMBO_END};
 const uint16_t PROGMEM se_unds_combo[] = {KC_S, KC_E, COMBO_END};
 const uint16_t PROGMEM sr_mins_combo[] = {KC_S, KC_R, COMBO_END};
 const uint16_t PROGMEM sv_u_combo[] = {KC_S, KC_V, COMBO_END};
 const uint16_t PROGMEM ae_scln_combo[] = {KEY_A, KC_E, COMBO_END};
-const uint16_t PROGMEM ar_quot_combo[] = {KEY_A, KC_R, COMBO_END};
 const uint16_t PROGMEM aw_coln_combo[] = {KEY_A, KC_W, COMBO_END};
-const uint16_t PROGMEM fq_grv_combo[] = {KEY_F, KC_Q, COMBO_END};
 const uint16_t PROGMEM df_j_combo[] = {KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM dv_eql_combo[] = {KEY_D, KC_V, COMBO_END};
 const uint16_t PROGMEM sd_k_combo[] = {KC_S, KEY_D, COMBO_END};
@@ -191,15 +185,12 @@ combo_t key_combos[] = {
     [XCV_ESC] = COMBO(xcv_esc_combo, KC_ESC),
     [WER_TAB] = COMBO(wer_tab, KC_TAB),
     [SEF_CAPS_WORD] = COMBO(sef_caps_word_combo, KC_NO),
-    [FWE_OS_SHIFT] = COMBO(fwe_os_shift_combo, OSM(MOD_LSFT)),
     [FE_I] = COMBO(fe_i_combo, KC_I),
     [SE_UNDS] = COMBO(se_unds_combo, KC_UNDS),
     [SR_MINS] = COMBO(sr_mins_combo, KC_MINS),
     [SV_U] = COMBO(sv_u_combo, KC_U),
     [AE_SCLN] = COMBO(ae_scln_combo, KC_SCLN),
-    [AR_QUOT] = COMBO(ar_quot_combo, KC_QUOT),
     [AW_COLN] = COMBO(aw_coln_combo, KC_COLN),
-    [FQ_GRV] = COMBO(fq_grv_combo, KC_GRV),
     [DF_J] = COMBO(df_j_combo, KC_J),
     [DV_EQL] = COMBO(dv_eql_combo, KC_EQL),
     [SD_K] = COMBO(sd_k_combo, KC_K),
