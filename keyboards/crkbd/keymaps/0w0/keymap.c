@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define KEY_D LT(4, KC_D)
 #define KEY_F LT(2, KC_F)
+#define KEY_S LT(5, KC_S)
 #define KEY_J LT(1, KC_J)
 #define KEY_K LSFT_T(KC_K)
 #define KEY_A LT(1, KC_A)
@@ -36,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_ESC,    KEY_A,   KC_S,    KEY_D,   KEY_F,   KC_G,                         KC_H,    KEY_J,   KEY_K,   KC_L,   KC_SCLN, KC_QUOT,
+       KC_ESC,    KEY_A,  KEY_S,    KEY_D,   KEY_F,   KC_G,                         KC_H,    KEY_J,   KEY_K,   KC_L,   KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_RSFT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -93,6 +94,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`------------------------'  `--------------------------'
   ),
 
+  // 多媒体控制
+  [5] = LAYOUT_split_3x6_3(
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+      _______, _______, _______, KC_MPRV, KC_MNXT, _______,                      _______, _______, _______, _______, _______, _______,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______, _______, _______, KC_VOLU, KC_VOLD, KC_MPLY,                      _______, _______, _______, _______, _______, _______,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+      _______, _______, _______, _______, _______, _______,                      _______, _______, _______, _______, _______, _______,
+
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+					_______, _______, _______,     _______, _______, _______
+                                      //`------------------------'  `--------------------------'
+  ),
+
 };
 
 /* combos */
@@ -144,21 +159,21 @@ enum combos {
 };
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
-const uint16_t PROGMEM sdf_ent_combo[] = {KC_S, KEY_D, KEY_F, COMBO_END};
+const uint16_t PROGMEM sdf_ent_combo[] = {KEY_S, KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM xcv_esc_combo[] = {KC_X, KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM wer_tab[] = {KC_W, KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM sef_caps_word_combo[] = {KC_S, KC_E, KEY_F, COMBO_END};
+const uint16_t PROGMEM sef_caps_word_combo[] = {KEY_S, KC_E, KEY_F, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[] = {KEY_F, KC_E, COMBO_END};
-const uint16_t PROGMEM se_unds_combo[] = {KC_S, KC_E, COMBO_END};
-const uint16_t PROGMEM sr_mins_combo[] = {KC_S, KC_R, COMBO_END};
-const uint16_t PROGMEM sv_u_combo[] = {KC_S, KC_V, COMBO_END};
+const uint16_t PROGMEM se_unds_combo[] = {KEY_S, KC_E, COMBO_END};
+const uint16_t PROGMEM sr_mins_combo[] = {KEY_S, KC_R, COMBO_END};
+const uint16_t PROGMEM sv_u_combo[] = {KEY_S, KC_V, COMBO_END};
 const uint16_t PROGMEM ae_scln_combo[] = {KEY_A, KC_E, COMBO_END};
 const uint16_t PROGMEM aw_coln_combo[] = {KEY_A, KC_W, COMBO_END};
 const uint16_t PROGMEM df_j_combo[] = {KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM dv_eql_combo[] = {KEY_D, KC_V, COMBO_END};
-const uint16_t PROGMEM sd_k_combo[] = {KC_S, KEY_D, COMBO_END};
+const uint16_t PROGMEM sd_k_combo[] = {KEY_S, KEY_D, COMBO_END};
 const uint16_t PROGMEM fw_p_combo[] = {KEY_F, KC_W, COMBO_END};
-const uint16_t PROGMEM fs_l_combo[] = {KEY_F, KC_S, COMBO_END};
+const uint16_t PROGMEM fs_l_combo[] = {KEY_F, KEY_S, COMBO_END};
 const uint16_t PROGMEM dx_h_combo[] = {KEY_D, KC_X, COMBO_END};
 const uint16_t PROGMEM we_o_combo[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM wr_plus_combo[] = {KC_W, KC_R, COMBO_END};
@@ -177,7 +192,7 @@ const uint16_t PROGMEM rg_ampr_combo[] = {KC_R, KC_G, COMBO_END};
 const uint16_t PROGMEM bf_circ_combo[] = {KC_B, KEY_F, COMBO_END};
 const uint16_t PROGMEM arrow_lr_pgup_combo[] = {KC_LEFT, KC_RIGHT, COMBO_END};
 const uint16_t PROGMEM arrow_ud_pgdn_combo[] = {KC_UP, KC_DOWN, COMBO_END};
-const uint16_t PROGMEM asdf_layer_combo[] = {KEY_A, KC_S, KEY_D, KEY_F, COMBO_END};
+const uint16_t PROGMEM asdf_layer_combo[] = {KEY_A, KEY_S, KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM wsps_layer_combo[] = {KC_W, KEY_THUMB_L_2, COMBO_END};
 
 combo_t key_combos[] = {
