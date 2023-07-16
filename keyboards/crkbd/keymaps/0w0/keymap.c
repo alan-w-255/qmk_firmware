@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______, _______, KC_PERC, _______, KC_LCBR, KC_RCBR,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_GRV, KC_BSLS, _______, OSM(MOD_LSFT), _______,                      _______, _______, _______, _______, _______, _______,
+      _______, KC_GRV, KC_BSLS, _______, OSM(MOD_LSFT), CW_TOGG,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, _______, _______, _______, KC_QUOT, _______,                      _______, _______, _______, _______, _______, _______,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -115,7 +115,6 @@ enum combos {
     SDF_ENTER,
     XCV_ESC,
     WER_TAB,
-    SEF_CAPS_WORD,
 
     // alphas combos
     FE_I,
@@ -162,7 +161,6 @@ uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this
 const uint16_t PROGMEM sdf_ent_combo[] = {KEY_S, KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM xcv_esc_combo[] = {KC_X, KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM wer_tab[] = {KC_W, KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM sef_caps_word_combo[] = {KEY_S, KC_E, KEY_F, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[] = {KEY_F, KC_E, COMBO_END};
 const uint16_t PROGMEM se_unds_combo[] = {KEY_S, KC_E, COMBO_END};
 const uint16_t PROGMEM sr_mins_combo[] = {KEY_S, KC_R, COMBO_END};
@@ -199,7 +197,6 @@ combo_t key_combos[] = {
     [SDF_ENTER] = COMBO(sdf_ent_combo, KC_ENT),
     [XCV_ESC] = COMBO(xcv_esc_combo, KC_ESC),
     [WER_TAB] = COMBO(wer_tab, KC_TAB),
-    [SEF_CAPS_WORD] = COMBO(sef_caps_word_combo, KC_NO),
     [FE_I] = COMBO(fe_i_combo, KC_I),
     [SE_UNDS] = COMBO(se_unds_combo, KC_UNDS),
     [SR_MINS] = COMBO(sr_mins_combo, KC_MINS),
@@ -232,13 +229,3 @@ combo_t key_combos[] = {
     [ARROW_LR_PGUP] = COMBO(arrow_lr_pgup_combo, KC_PGUP),
     [ARROW_UD_PGDN] = COMBO(arrow_ud_pgdn_combo, KC_PGDN),
 };
-
-void process_combo_event(uint16_t combo_index, bool pressed) {
-    switch (combo_index) {
-	case SEF_CAPS_WORD:
-	    if (pressed) {
-		caps_word_toggle();
-            }
-	    break;
-    }
-}
