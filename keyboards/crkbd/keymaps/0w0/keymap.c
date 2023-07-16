@@ -113,8 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* combos */
 enum combos {
     SDF_ENTER,
-    XCV_ESC,
-    WER_TAB,
+    RG_TAB,
 
     // alphas combos
     FE_I,
@@ -144,7 +143,7 @@ enum combos {
     FV_LBRC,
     GB_RBRC,
     FG_ASTR,
-    RG_AMPR,
+    TR_AMPR,
     BF_CIRC,
 
     // layer switch combos
@@ -159,8 +158,7 @@ enum combos {
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 const uint16_t PROGMEM sdf_ent_combo[] = {KEY_S, KEY_D, KEY_F, COMBO_END};
-const uint16_t PROGMEM xcv_esc_combo[] = {KC_X, KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM wer_tab[] = {KC_W, KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM rg_tab[] = {KC_R, KC_G, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[] = {KEY_F, KC_E, COMBO_END};
 const uint16_t PROGMEM se_unds_combo[] = {KEY_S, KC_E, COMBO_END};
 const uint16_t PROGMEM sr_mins_combo[] = {KEY_S, KC_R, COMBO_END};
@@ -186,7 +184,7 @@ const uint16_t PROGMEM tg_rprn_combo[] = {KC_T, KC_G, COMBO_END};
 const uint16_t PROGMEM fv_lbrc_combo[] = {KEY_F, KC_V, COMBO_END};
 const uint16_t PROGMEM gb_rbrc_combo[] = {KC_G, KC_B, COMBO_END};
 const uint16_t PROGMEM fg_astr_combo[] = {KEY_F, KC_G, COMBO_END};
-const uint16_t PROGMEM rg_ampr_combo[] = {KC_R, KC_G, COMBO_END};
+const uint16_t PROGMEM tr_ampr_combo[] = {KC_T, KC_R, COMBO_END};
 const uint16_t PROGMEM bf_circ_combo[] = {KC_B, KEY_F, COMBO_END};
 const uint16_t PROGMEM arrow_lr_pgup_combo[] = {KC_LEFT, KC_RIGHT, COMBO_END};
 const uint16_t PROGMEM arrow_ud_pgdn_combo[] = {KC_UP, KC_DOWN, COMBO_END};
@@ -195,8 +193,7 @@ const uint16_t PROGMEM wsps_layer_combo[] = {KC_W, KEY_THUMB_L_2, COMBO_END};
 
 combo_t key_combos[] = {
     [SDF_ENTER] = COMBO(sdf_ent_combo, KC_ENT),
-    [XCV_ESC] = COMBO(xcv_esc_combo, KC_ESC),
-    [WER_TAB] = COMBO(wer_tab, KC_TAB),
+    [RG_TAB] = COMBO(rg_tab, KC_TAB),
     [FE_I] = COMBO(fe_i_combo, KC_I),
     [SE_UNDS] = COMBO(se_unds_combo, KC_UNDS),
     [SR_MINS] = COMBO(sr_mins_combo, KC_MINS),
@@ -222,7 +219,7 @@ combo_t key_combos[] = {
     [FV_LBRC] = COMBO(fv_lbrc_combo, KC_LBRC),
     [GB_RBRC] = COMBO(gb_rbrc_combo, KC_RBRC),
     [FG_ASTR] = COMBO(fg_astr_combo, KC_ASTR),
-    [RG_AMPR] = COMBO(rg_ampr_combo, KC_AMPR),
+    [TR_AMPR] = COMBO(tr_ampr_combo, KC_AMPR),
     [BF_CIRC] = COMBO(bf_circ_combo, KC_CIRC),
     [ASDF_LAYER] = COMBO(asdf_layer_combo, TO(3)),
     [WSPS_LAYER] = COMBO(wsps_layer_combo, TO(1)),
