@@ -64,8 +64,8 @@ int cur_dance(tap_dance_state_t *state);
 int cur_dance_modifier(tap_dance_state_t *state);
 
 // for the x tap dance. Put it here so it can be used in any keymap
-void x_finished(tap_dance_state_t *state, void *user_data);
-void x_reset(tap_dance_state_t *state, void *user_data);
+void td_spc_ctl_finished(tap_dance_state_t *state, void *user_data);
+void td_spc_ctl_reset(tap_dance_state_t *state, void *user_data);
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_split_3x6_3(
@@ -353,7 +353,7 @@ int cur_dance_modifier(tap_dance_state_t *state) {
 // instanalize an instance of 'tap' for the 'x' tap dance.
 static tap spc_ctl_tap_state = {.is_press_action = true, .state = 0};
 
-void x_finished(tap_dance_state_t *state, void *user_data) {
+void td_spc_ctl_finished(tap_dance_state_t *state, void *user_data) {
     spc_ctl_tap_state.state = cur_dance_modifier(state);
     switch (spc_ctl_tap_state.state) {
         case SINGLE_TAP:
@@ -381,7 +381,7 @@ void x_finished(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void x_reset(tap_dance_state_t *state, void *user_data) {
+void td_spc_ctl_reset(tap_dance_state_t *state, void *user_data) {
     switch (spc_ctl_tap_state.state) {
         case SINGLE_TAP:
             unregister_code(KC_SPC);
@@ -401,4 +401,4 @@ void x_reset(tap_dance_state_t *state, void *user_data) {
     spc_ctl_tap_state.state = 0;
 }
 
-tap_dance_action_t tap_dance_actions[] = {[TD_SPC_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset)};
+tap_dance_action_t tap_dance_actions[] = {[TD_SPC_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_spc_ctl_finished, td_spc_ctl_reset)};
