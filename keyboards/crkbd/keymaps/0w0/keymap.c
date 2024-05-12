@@ -27,7 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define KEY_A LT(1, KC_A)
 #define KEY_THUMB_L_1 RGUI_T(KC_BSPC)
 #define KEY_THUMB_L_2 TD(TD_SPC_CTL)
-#define KEY_THUMB_L_3 LALT_T(KC_LEFT)
+#define KEY_THUMB_L_3 TD(TD_ALT_CTL)
 #define KEY_THUMB_R_1 RGUI_T(KC_ENT)
 #define KEY_THUMB_R_2 RCTL_T(KC_TAB)
 #define KEY_THUMB_R_3 RALT_T(KC_RGHT)
@@ -49,7 +49,10 @@ enum {
 };
 
 // Tap dance enums
-enum { TD_SPC_CTL = 0 };
+enum {
+    TD_SPC_CTL = 0,
+    TD_ALT_CTL = 1,
+};
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -401,4 +404,56 @@ void td_spc_ctl_reset(tap_dance_state_t *state, void *user_data) {
     spc_ctl_tap_state.state = 0;
 }
 
-tap_dance_action_t tap_dance_actions[] = {[TD_SPC_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_spc_ctl_finished, td_spc_ctl_reset)};
+static tap alt_ctl_tap_state = {.is_press_action = true, .state = 0};
+
+void td_alt_ctl_finished(tap_dance_state_t *state, void *user_data) {
+    alt_ctl_tap_state.state = cur_dance_modifier(state);
+    switch (alt_ctl_tap_state.state) {
+        case SINGLE_TAP:
+            register_code(KC_LEFT);
+            break;
+        case SINGLE_HOLD:
+            register_code(KC_LALT);
+            break;
+        case DOUBLE_TAP:
+            register_code(KC_LEFT);
+            unregister_code(KC_LEFT);
+            register_code(KC_LEFT);
+            break;
+        case DOUBLE_HOLD:
+            register_code(KC_LCTL);
+            register_code(KC_LALT);
+        case DOUBLE_SINGLE_TAP:
+            register_code(KC_LEFT);
+            unregister_code(KC_LEFT);
+            register_code(KC_LEFT);
+            // Last case is for fast typing. Assuming your key is `f`:
+            // For example, when typing the word `buffer`, and you want to make sure that you send `ff` and not `Esc`.
+            // In order to type `ff` when typing fast, the next character will have to be hit within the `TAPPING_TERM`, which by default is 200ms.
+    }
+}
+
+void td_alt_ctl_reset(tap_dance_state_t *state, void *user_data) {
+    switch (alt_ctl_tap_state.state) {
+        case SINGLE_TAP:
+            unregister_code(KC_LEFT);
+            break;
+        case SINGLE_HOLD:
+            unregister_code(KC_LALT);
+            break;
+        case DOUBLE_TAP:
+            unregister_code(KC_LEFT);
+            break;
+        case DOUBLE_HOLD:
+            unregister_code(KC_LCTL);
+            unregister_code(KC_LALT);
+        case DOUBLE_SINGLE_TAP:
+            unregister_code(KC_LEFT);
+    }
+    spc_ctl_tap_state.state = 0;
+}
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_SPC_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_spc_ctl_finished, td_spc_ctl_reset),
+    [TD_ALT_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_alt_ctl_finished, td_alt_ctl_reset),
+};
