@@ -366,6 +366,13 @@ void td_spc_ctl_finished(tap_dance_state_t *state, void *user_data) {
             register_code(KC_LCTL);
             register_code(KC_LSFT);
             break;
+	default:
+	    register_code(KC_SPC);
+	    for (int i = 1; i < state->count; i++) {
+		unregister_code(KC_SPC);
+		register_code(KC_SPC);
+	    }
+	    break;
     }
 }
 
@@ -383,6 +390,10 @@ void td_spc_ctl_reset(tap_dance_state_t *state, void *user_data) {
         case DOUBLE_HOLD:
             unregister_code(KC_LCTL);
             unregister_code(KC_LSFT);
+	    break;
+	default:
+            unregister_code(KC_SPC);
+            break;
     }
     spc_ctl_tap_state.state = 0;
 }
@@ -406,6 +417,14 @@ void td_alt_ctl_finished(tap_dance_state_t *state, void *user_data) {
         case DOUBLE_HOLD:
             register_code(KC_LCTL);
             register_code(KC_LALT);
+	    break;
+	default:
+	    register_code(KC_LEFT);
+	    for (int i = 1; i < state->count; i++) {
+		unregister_code(KC_LEFT);
+		register_code(KC_LEFT);
+	    }
+	    break;
     }
 }
 
@@ -423,6 +442,10 @@ void td_alt_ctl_reset(tap_dance_state_t *state, void *user_data) {
         case DOUBLE_HOLD:
             unregister_code(KC_LCTL);
             unregister_code(KC_LALT);
+	    break;
+	default:
+            unregister_code(KC_LEFT);
+            break;
     }
     alt_ctl_tap_state.state = 0;
 }
@@ -445,6 +468,14 @@ void td_super_shift_finished(tap_dance_state_t *state, void *user_data) {
             break;
         case DOUBLE_HOLD:
             register_code(KC_LSFT);
+	    break;
+	default:
+	    register_code(KC_BSPC);
+	    for (int i = 1; i < state->count; i++) {
+		unregister_code(KC_BSPC);
+		register_code(KC_BSPC);
+	    }
+	    break;
     }
 }
 
@@ -461,6 +492,10 @@ void td_super_shift_reset(tap_dance_state_t *state, void *user_data) {
             break;
         case DOUBLE_HOLD:
             unregister_code(KC_LSFT);
+	    break;
+	default:
+            unregister_code(KC_BSPC);
+            break;
     }
     super_shift_tap_state.state = 0;
 }
