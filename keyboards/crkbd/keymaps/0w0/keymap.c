@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define KEY_J LT(1, KC_J)
 #define KEY_K LSFT_T(KC_K)
 #define KEY_A LT(1, KC_A)
-#define KEY_THUMB_L_1 RGUI_T(KC_BSPC)
+#define KEY_THUMB_L_1 TD(TD_GUI_SFT)
 #define KEY_THUMB_L_2 TD(TD_SPC_CTL)
 #define KEY_THUMB_L_3 TD(TD_ALT_CTL)
 #define KEY_THUMB_R_1 RGUI_T(KC_ENT)
@@ -52,12 +52,13 @@ enum {
 enum {
     TD_SPC_CTL = 0,
     TD_ALT_CTL = 1,
+    TD_GUI_SFT = 2,
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KEY_THUMB_L_2:
-            return 200;
+            return 170;
         default:
             return TAPPING_TERM;
     }
@@ -327,23 +328,14 @@ int cur_dance(tap_dance_state_t *state) {
 int cur_dance_modifier(tap_dance_state_t *state) {
     if (state->count == 1) {
         if (!state->pressed) return SINGLE_TAP;
-        // key has not been interrupted, but they key is still held. Means you want to send a 'HOLD'.
         else
             return SINGLE_HOLD;
     } else if (state->count == 2) {
-        /*
-         * DOUBLE_SINGLE_TAP is to distinguish between typing "pepper", and actually wanting a double tap
-         * action when hitting 'pp'. Suggested use case for this return value is when you want to send two
-         * keystrokes of the key, and not the 'double tap' action/macro.
-         */
         if (state->pressed)
             return DOUBLE_HOLD;
         else
             return DOUBLE_TAP;
     }
-    // Assumes no one is trying to type the same letter three times (at least not quickly).
-    // If your tap dance key is 'KC_W', and you want to type "www." quickly - then you will need to add
-    // an exception here to return a 'TRIPLE_SINGLE_TAP', and define that enum just like 'DOUBLE_SINGLE_TAP'
     if (state->count == 3) {
         if (!state->pressed)
             return TRIPLE_TAP;
@@ -374,13 +366,6 @@ void td_spc_ctl_finished(tap_dance_state_t *state, void *user_data) {
             register_code(KC_LCTL);
             register_code(KC_LSFT);
             break;
-        case DOUBLE_SINGLE_TAP:
-            register_code(KC_SPC);
-            unregister_code(KC_SPC);
-            register_code(KC_SPC);
-            // Last case is for fast typing. Assuming your key is `f`:
-            // For example, when typing the word `buffer`, and you want to make sure that you send `ff` and not `Esc`.
-            // In order to type `ff` when typing fast, the next character will have to be hit within the `TAPPING_TERM`, which by default is 200ms.
     }
 }
 
@@ -398,8 +383,6 @@ void td_spc_ctl_reset(tap_dance_state_t *state, void *user_data) {
         case DOUBLE_HOLD:
             unregister_code(KC_LCTL);
             unregister_code(KC_LSFT);
-        case DOUBLE_SINGLE_TAP:
-            unregister_code(KC_SPC);
     }
     spc_ctl_tap_state.state = 0;
 }
@@ -423,13 +406,6 @@ void td_alt_ctl_finished(tap_dance_state_t *state, void *user_data) {
         case DOUBLE_HOLD:
             register_code(KC_LCTL);
             register_code(KC_LALT);
-        case DOUBLE_SINGLE_TAP:
-            register_code(KC_LEFT);
-            unregister_code(KC_LEFT);
-            register_code(KC_LEFT);
-            // Last case is for fast typing. Assuming your key is `f`:
-            // For example, when typing the word `buffer`, and you want to make sure that you send `ff` and not `Esc`.
-            // In order to type `ff` when typing fast, the next character will have to be hit within the `TAPPING_TERM`, which by default is 200ms.
     }
 }
 
@@ -447,13 +423,51 @@ void td_alt_ctl_reset(tap_dance_state_t *state, void *user_data) {
         case DOUBLE_HOLD:
             unregister_code(KC_LCTL);
             unregister_code(KC_LALT);
-        case DOUBLE_SINGLE_TAP:
-            unregister_code(KC_LEFT);
     }
-    spc_ctl_tap_state.state = 0;
+    alt_ctl_tap_state.state = 0;
 }
+
+static tap super_shift_tap_state = {.is_press_action = true, .state = 0};
+
+void td_super_shift_finished(tap_dance_state_t *state, void *user_data) {
+    super_shift_tap_state.state = cur_dance_modifier(state);
+    switch (super_shift_tap_state.state) {
+        case SINGLE_TAP:
+            register_code(KC_BSPC);
+            break;
+        case SINGLE_HOLD:
+            register_code(KC_LGUI);
+            break;
+        case DOUBLE_TAP:
+            register_code(KC_BSPC);
+            unregister_code(KC_BSPC);
+            register_code(KC_BSPC);
+            break;
+        case DOUBLE_HOLD:
+            register_code(KC_LSFT);
+    }
+}
+
+void td_super_shift_reset(tap_dance_state_t *state, void *user_data) {
+    switch (super_shift_tap_state.state) {
+        case SINGLE_TAP:
+            unregister_code(KC_BSPC);
+            break;
+        case SINGLE_HOLD:
+            unregister_code(KC_LGUI);
+            break;
+        case DOUBLE_TAP:
+            unregister_code(KC_BSPC);
+            break;
+        case DOUBLE_HOLD:
+            unregister_code(KC_LSFT);
+    }
+    super_shift_tap_state.state = 0;
+}
+
 
 tap_dance_action_t tap_dance_actions[] = {
     [TD_SPC_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_spc_ctl_finished, td_spc_ctl_reset),
     [TD_ALT_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_alt_ctl_finished, td_alt_ctl_reset),
+    [TD_GUI_SFT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_super_shift_finished, td_super_shift_reset),
 };
