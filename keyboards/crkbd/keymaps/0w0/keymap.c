@@ -59,6 +59,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case KEY_THUMB_L_2:
             return 170;
+        case KEY_THUMB_L_1:
+            return 170;
+        case KEY_THUMB_L_3:
+            return 170;
         default:
             return TAPPING_TERM;
     }
