@@ -185,7 +185,7 @@ enum combos {
     DOTSCLN_X,
     JSCLN_A,
     ISCLN_Z,
-    KO_C,
+    DOTCOMMA_C,
     OI_W,
     MCOMMA_B,
     MDOT_V,
@@ -277,7 +277,7 @@ const uint16_t PROGMEM jl_s_combo[]          = {KEY_J, KC_L, COMBO_END};
 const uint16_t PROGMEM dotscln_x_combo[]     = {KC_DOT, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM jscln_a_combo[]       = {KEY_J, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM iscln_z_combo[]       = {KC_I, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM ko_c_combo[]          = {KC_K, KC_O, COMBO_END};
+const uint16_t PROGMEM dotcomma_c_combo[]    = {KC_DOT, KC_COMM, COMBO_END};
 const uint16_t PROGMEM oi_w_combo[]          = {KC_O, KC_I, COMBO_END};
 const uint16_t PROGMEM ui_t_combo[]          = {KC_U, KC_I, COMBO_END};
 const uint16_t PROGMEM mcomma_b_combo[]      = {KC_M, KC_COMM, COMBO_END};
@@ -329,7 +329,7 @@ combo_t key_combos[] = {
     [DOTSCLN_X]     = COMBO(dotscln_x_combo, KC_X),
     [JSCLN_A]       = COMBO(jscln_a_combo, KC_A),
     [ISCLN_Z]       = COMBO(iscln_z_combo, KC_Z),
-    [KO_C]          = COMBO(ko_c_combo, KC_C),
+    [DOTCOMMA_C]    = COMBO(dotcomma_c_combo, KC_C),
     [OI_W]          = COMBO(oi_w_combo, KC_W),
     [MCOMMA_B]      = COMBO(mcomma_b_combo, KC_B),
     [MDOT_V]        = COMBO(mdot_b_combo, KC_V),
