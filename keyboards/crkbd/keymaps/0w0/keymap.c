@@ -29,8 +29,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define KEY_THUMB_L_1 LGUI_T(KC_BSPC)
 #define KEY_THUMB_L_2 LCTL_T(KC_SPC)
 #define KEY_THUMB_L_3 LALT_T(KC_LEFT)
-#define KEY_THUMB_R_1 RGUI_T(KC_ENT)
-#define KEY_THUMB_R_2 RCTL_T(KC_TAB)
+#define KEY_THUMB_R_1 RGUI_T(KC_BSPC)
+#define KEY_THUMB_R_2 RCTL_T(KC_SPC)
 #define KEY_THUMB_R_3 RALT_T(KC_RGHT)
 
 // quad function tab dance
@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_ESC, KEY_A, KEY_S, KEY_D, KEY_F, KC_G, KC_H, KEY_J, KEY_K, KC_L, KC_SCLN, KC_QUOT,
+        KC_ESC, KEY_A, KEY_S, KEY_D, KEY_F, KC_G, KC_H, KEY_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -92,11 +92,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [1] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        _______, TO(0), KC_1, KC_2, KC_3, KC_MINS, _______, _______, _______, _______, _______, _______,
+        _______, TO(0), KC_1, KC_2, KC_3, KC_MINS, KC_MINS, KC_3, KC_2, KC_1, TO(0), _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        _______, KC_DOT, KC_4, KC_5, KC_6, KC_0, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, _______, _______,
+        _______, KC_DOT, KC_4, KC_5, KC_6, KC_0, KC_0, KC_6, KC_5, KC_4, KC_DOT, _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        _______, KC_COLN, KC_7, KC_8, KC_9, KC_PLUS, _______, _______, _______, _______, _______, _______,
+        _______, KC_COLN, KC_7, KC_8, KC_9, KC_PLUS, KC_PLUS, KC_9, KC_8, KC_7, KC_COLN, _______,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
         _______, _______, _______, _______, _______, _______
         //`------------------------'  `--------------------------'
@@ -157,6 +157,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* combos */
 enum combos {
     SDF_ENTER,
+    JKL_ENTER,
     RG_TAB,
 
     // alphas combos
@@ -171,6 +172,23 @@ enum combos {
     RE_Y,
     CV_N,
     XV_M,
+
+    // right alphas combos
+    UI_T,
+    JI_E,
+    LM_R,
+    JK_F,
+    LK_D,
+    JO_Q,
+    KDOT_G,
+    JL_S,
+    DOTSCLN_X,
+    JSCLN_A,
+    ISCLN_Z,
+    KO_C,
+    OI_W,
+    MCOMMA_B,
+    MDOT_V,
 
     // 符号 combos
     DV_EQL,
@@ -190,6 +208,20 @@ enum combos {
     TR_AMPR,
     BF_CIRC,
 
+    // right symbol combos
+    /* KM_EQL, */
+    /* KO_UNDS, */
+    /* LU_MINS, */
+    /* OSCLN_COLN, */
+    /* OU_PLUS, */
+    /* UJ_LPRN, */
+    /* YH_RPRN, */
+    /* JM_LBRC, */
+    /* HN_RBRC, */
+    /* JH_ASTR, */
+    /* UY_AMPR, */
+    /* NJ_CIRC, */
+
     // layer switch combos
     ASDF_LAYER,
     WSPS_LAYER,
@@ -202,6 +234,7 @@ enum combos {
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 const uint16_t PROGMEM sdf_ent_combo[]       = {KEY_S, KEY_D, KEY_F, COMBO_END};
+const uint16_t PROGMEM jkl_ent_combo[]       = {KEY_J, KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM rg_tab[]              = {KC_R, KC_G, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[]          = {KEY_F, KC_E, COMBO_END};
 const uint16_t PROGMEM se_unds_combo[]       = {KEY_S, KC_E, COMBO_END};
@@ -234,9 +267,25 @@ const uint16_t PROGMEM arrow_lr_pgup_combo[] = {KC_LEFT, KC_RIGHT, COMBO_END};
 const uint16_t PROGMEM arrow_ud_pgdn_combo[] = {KC_UP, KC_DOWN, COMBO_END};
 const uint16_t PROGMEM asdf_layer_combo[]    = {KEY_A, KEY_S, KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM wsps_layer_combo[]    = {KC_W, KEY_THUMB_L_2, COMBO_END};
+const uint16_t PROGMEM ji_e_combo[]          = {KEY_J, KC_I, COMBO_END};
+const uint16_t PROGMEM lm_r_combo[]          = {KC_L, KC_M, COMBO_END};
+const uint16_t PROGMEM jk_f_combo[]          = {KEY_J, KC_K, COMBO_END};
+const uint16_t PROGMEM lk_d_combo[]          = {KC_L, KC_K, COMBO_END};
+const uint16_t PROGMEM jo_q_combo[]          = {KEY_J, KC_O, COMBO_END};
+const uint16_t PROGMEM kdot_g_combo[]        = {KC_K, KC_DOT, COMBO_END};
+const uint16_t PROGMEM jl_s_combo[]          = {KEY_J, KC_L, COMBO_END};
+const uint16_t PROGMEM dotscln_x_combo[]     = {KC_DOT, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM jscln_a_combo[]       = {KEY_J, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM iscln_z_combo[]       = {KC_I, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM ko_c_combo[]          = {KC_K, KC_O, COMBO_END};
+const uint16_t PROGMEM oi_w_combo[]          = {KC_O, KC_I, COMBO_END};
+const uint16_t PROGMEM ui_t_combo[]          = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM mcomma_b_combo[]      = {KC_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM mdot_b_combo[]        = {KC_M, KC_DOT, COMBO_END};
 
 combo_t key_combos[] = {
     [SDF_ENTER]     = COMBO(sdf_ent_combo, KC_ENT),
+    [JKL_ENTER]     = COMBO(jkl_ent_combo, KC_ENT),
     [RG_TAB]        = COMBO(rg_tab, KC_TAB),
     [FE_I]          = COMBO(fe_i_combo, KC_I),
     [SE_UNDS]       = COMBO(se_unds_combo, KC_UNDS),
@@ -269,6 +318,21 @@ combo_t key_combos[] = {
     [WSPS_LAYER]    = COMBO(wsps_layer_combo, TO(1)),
     [ARROW_LR_PGUP] = COMBO(arrow_lr_pgup_combo, KC_PGUP),
     [ARROW_UD_PGDN] = COMBO(arrow_ud_pgdn_combo, KC_PGDN),
+    [JK_F]          = COMBO(jk_f_combo, KC_F),
+    [UI_T]          = COMBO(ui_t_combo, KC_T),
+    [JI_E]          = COMBO(ji_e_combo, KC_E),
+    [LM_R]          = COMBO(lm_r_combo, KC_R),
+    [LK_D]          = COMBO(lk_d_combo, KC_D),
+    [JO_Q]          = COMBO(jo_q_combo, KC_Q),
+    [KDOT_G]        = COMBO(kdot_g_combo, KC_G),
+    [JL_S]          = COMBO(jl_s_combo, KC_S),
+    [DOTSCLN_X]     = COMBO(dotscln_x_combo, KC_X),
+    [JSCLN_A]       = COMBO(jscln_a_combo, KC_A),
+    [ISCLN_Z]       = COMBO(iscln_z_combo, KC_Z),
+    [KO_C]          = COMBO(ko_c_combo, KC_C),
+    [OI_W]          = COMBO(oi_w_combo, KC_W),
+    [MCOMMA_B]      = COMBO(mcomma_b_combo, KC_B),
+    [MDOT_V]        = COMBO(mdot_b_combo, KC_V),
 };
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.
@@ -332,7 +396,8 @@ int cur_dance(tap_dance_state_t *state) {
 // modifier 意味着 state->interrupted 的时候更应该表现为修饰符。而不是多次输入
 int cur_dance_modifier(tap_dance_state_t *state) {
     if (state->count == 1) {
-        if (!state->pressed) return SINGLE_TAP;
+        if (!state->pressed)
+            return SINGLE_TAP;
         else
             return SINGLE_HOLD;
     } else if (state->count == 2) {
@@ -371,13 +436,13 @@ void td_spc_ctl_finished(tap_dance_state_t *state, void *user_data) {
             register_code(KC_LCTL);
             register_code(KC_LSFT);
             break;
-	default:
-	    register_code(KC_SPC);
-	    for (int i = 1; i < state->count; i++) {
-		unregister_code(KC_SPC);
-		register_code(KC_SPC);
-	    }
-	    break;
+        default:
+            register_code(KC_SPC);
+            for (int i = 1; i < state->count; i++) {
+                unregister_code(KC_SPC);
+                register_code(KC_SPC);
+            }
+            break;
     }
 }
 
@@ -395,8 +460,8 @@ void td_spc_ctl_reset(tap_dance_state_t *state, void *user_data) {
         case DOUBLE_HOLD:
             unregister_code(KC_LCTL);
             unregister_code(KC_LSFT);
-	    break;
-	default:
+            break;
+        default:
             unregister_code(KC_SPC);
             break;
     }
@@ -422,14 +487,14 @@ void td_alt_ctl_finished(tap_dance_state_t *state, void *user_data) {
         case DOUBLE_HOLD:
             register_code(KC_LCTL);
             register_code(KC_LALT);
-	    break;
-	default:
-	    register_code(KC_LEFT);
-	    for (int i = 1; i < state->count; i++) {
-		unregister_code(KC_LEFT);
-		register_code(KC_LEFT);
-	    }
-	    break;
+            break;
+        default:
+            register_code(KC_LEFT);
+            for (int i = 1; i < state->count; i++) {
+                unregister_code(KC_LEFT);
+                register_code(KC_LEFT);
+            }
+            break;
     }
 }
 
@@ -447,8 +512,8 @@ void td_alt_ctl_reset(tap_dance_state_t *state, void *user_data) {
         case DOUBLE_HOLD:
             unregister_code(KC_LCTL);
             unregister_code(KC_LALT);
-	    break;
-	default:
+            break;
+        default:
             unregister_code(KC_LEFT);
             break;
     }
@@ -473,14 +538,14 @@ void td_super_shift_finished(tap_dance_state_t *state, void *user_data) {
             break;
         case DOUBLE_HOLD:
             register_code(KC_LSFT);
-	    break;
-	default:
-	    register_code(KC_BSPC);
-	    for (int i = 1; i < state->count; i++) {
-		unregister_code(KC_BSPC);
-		register_code(KC_BSPC);
-	    }
-	    break;
+            break;
+        default:
+            register_code(KC_BSPC);
+            for (int i = 1; i < state->count; i++) {
+                unregister_code(KC_BSPC);
+                register_code(KC_BSPC);
+            }
+            break;
     }
 }
 
@@ -497,14 +562,13 @@ void td_super_shift_reset(tap_dance_state_t *state, void *user_data) {
             break;
         case DOUBLE_HOLD:
             unregister_code(KC_LSFT);
-	    break;
-	default:
+            break;
+        default:
             unregister_code(KC_BSPC);
             break;
     }
     super_shift_tap_state.state = 0;
 }
-
 
 tap_dance_action_t tap_dance_actions[] = {
     [TD_SPC_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, td_spc_ctl_finished, td_spc_ctl_reset),
