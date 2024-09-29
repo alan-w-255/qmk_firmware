@@ -19,12 +19,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include <stdio.h>
 
+#define KEY_A LT(1, KC_A)
+#define KEY_S LT(5, KC_S)
 #define KEY_D LT(4, KC_D)
 #define KEY_F LT(2, KC_F)
-#define KEY_S LT(5, KC_S)
-#define KEY_J LT(1, KC_J)
-#define KEY_K LSFT_T(KC_K)
-#define KEY_A LT(1, KC_A)
+
+#define KEY_J LT(2, KC_J)
+#define KEY_K LT(4, KC_K)
+#define KEY_L LT(5, KC_L)
+#define KEY_SCLN LT(1, KC_SCLN)
 
 #define KEY_THUMB_L_1 LGUI_T(KC_BSPC)
 #define KEY_THUMB_L_2 LCTL_T(KC_SPC)
@@ -81,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_ESC, KEY_A, KEY_S, KEY_D, KEY_F, KC_G, KC_H, KEY_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
+        KC_ESC, KEY_A, KEY_S, KEY_D, KEY_F, KC_G, KC_H, KEY_J, KC_K, KC_L, KC_SCLN, KC_ESC,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -104,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [2] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        _______, KC_EXLM, KC_LEFT, KC_RIGHT, KC_DLR, , KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_BSPC,
+        _______, KC_EXLM, KC_LEFT, KC_RIGHT, KC_DLR, _______, _______, KC_DLR, KC_LEFT, KC_RIGHT, KC_EXLM, _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_LCTL, KC_AT, KC_UP, KC_DOWN, _______, _______, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS, KC_GRV,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -159,7 +162,7 @@ enum combos {
     SDF_ENTER,
     JKL_ENTER,
     RG_TAB,
-
+    UH_TAB,
     // alphas combos
     FE_I,
     SV_U,
@@ -235,7 +238,8 @@ uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this
 
 const uint16_t PROGMEM sdf_ent_combo[]       = {KEY_S, KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM jkl_ent_combo[]       = {KEY_J, KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM rg_tab[]              = {KC_R, KC_G, COMBO_END};
+const uint16_t PROGMEM rg_tab_combo[]        = {KC_R, KC_G, COMBO_END};
+const uint16_t PROGMEM uh_tab_combo[]        = {KC_U, KC_H, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[]          = {KEY_F, KC_E, COMBO_END};
 const uint16_t PROGMEM se_unds_combo[]       = {KEY_S, KC_E, COMBO_END};
 const uint16_t PROGMEM sr_mins_combo[]       = {KEY_S, KC_R, COMBO_END};
@@ -286,7 +290,8 @@ const uint16_t PROGMEM mdot_b_combo[]        = {KC_M, KC_DOT, COMBO_END};
 combo_t key_combos[] = {
     [SDF_ENTER]     = COMBO(sdf_ent_combo, KC_ENT),
     [JKL_ENTER]     = COMBO(jkl_ent_combo, KC_ENT),
-    [RG_TAB]        = COMBO(rg_tab, KC_TAB),
+    [RG_TAB]        = COMBO(rg_tab_combo, KC_TAB),
+    [UH_TAB]        = COMBO(uh_tab_combo, KC_TAB),
     [FE_I]          = COMBO(fe_i_combo, KC_I),
     [SE_UNDS]       = COMBO(se_unds_combo, KC_UNDS),
     [SR_MINS]       = COMBO(sr_mins_combo, KC_MINS),
