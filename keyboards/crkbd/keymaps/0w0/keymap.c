@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_ESC, KEY_A, KEY_S, KEY_D, KEY_F, KC_G, KC_H, KEY_J, KC_K, KC_L, KC_SCLN, KC_ESC,
+        KC_ESC, KEY_A, KEY_S, KEY_D, KEY_F, KC_G, KC_H, KEY_J, KEY_K, KEY_L, KEY_SCLN, KC_ESC,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         _______, KC_EXLM, KC_LEFT, KC_RIGHT, KC_DLR, _______, _______, KC_DLR, KC_LEFT, KC_RIGHT, KC_EXLM, _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_LCTL, KC_AT, KC_UP, KC_DOWN, _______, _______, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS, KC_GRV,
+        KC_LCTL, KC_AT, KC_UP, KC_DOWN, _______, _______, _______, _______, KC_DOWN, KC_UP, KC_BSLS, KC_GRV,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_LSFT, KC_HASH, KC_LABK, KC_RABK, _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -133,9 +133,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         _______, _______, KC_PERC, _______, KC_LCBR, KC_RCBR, _______, _______, _______, _______, _______, _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        _______, KC_GRV, KC_BSLS, _______, OSM(MOD_LSFT), CW_TOGG, _______, _______, _______, _______, _______, _______,
+        _______, KC_GRV, KC_BSLS, _______, OSM(MOD_LSFT), CW_TOGG, CW_TOGG, OSM(MOD_LSFT), _______, KC_BSLS, KC_GRV, _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        _______, _______, _______, _______, KC_QUOT, _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, KC_QUOT, _______, _______, KC_QUOT, _______, _______, _______, _______,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
         _______, LCTL(KC_BSLS), _______, _______, _______, _______
         //`------------------------'  `--------------------------'
@@ -181,9 +181,9 @@ enum combos {
     JI_E,
     LM_R,
     JK_F,
-    LK_D,
+    LK_G,
     JO_Q,
-    KDOT_G,
+    KDOT_D,
     JL_S,
     MCOMMA_X,
     JSCLN_A,
@@ -212,13 +212,13 @@ enum combos {
     BF_CIRC,
 
     // right symbol combos
-    /* KM_EQL, */
-    /* KO_UNDS, */
+    KM_EQL,
+    KO_UNDS,
     /* LU_MINS, */
     /* OSCLN_COLN, */
     /* OU_PLUS, */
-    /* UJ_LPRN, */
-    /* YH_RPRN, */
+    UJ_LPRN,
+    YH_RPRN,
     /* JM_LBRC, */
     /* HN_RBRC, */
     /* JH_ASTR, */
@@ -237,7 +237,7 @@ enum combos {
 uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this instead!
 
 const uint16_t PROGMEM sdf_ent_combo[]       = {KEY_S, KEY_D, KEY_F, COMBO_END};
-const uint16_t PROGMEM jkl_ent_combo[]       = {KEY_J, KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM jkl_ent_combo[]       = {KEY_J, KEY_K, KEY_L, COMBO_END};
 const uint16_t PROGMEM rg_tab_combo[]        = {KC_R, KC_G, COMBO_END};
 const uint16_t PROGMEM uh_tab_combo[]        = {KC_U, KC_H, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[]          = {KEY_F, KC_E, COMBO_END};
@@ -262,6 +262,8 @@ const uint16_t PROGMEM af_dot_combo[]        = {KEY_A, KEY_F, COMBO_END};
 const uint16_t PROGMEM dw_slash_combo[]      = {KEY_D, KC_W, COMBO_END};
 const uint16_t PROGMEM rf_lprn_combo[]       = {KC_R, KEY_F, COMBO_END};
 const uint16_t PROGMEM tg_rprn_combo[]       = {KC_T, KC_G, COMBO_END};
+const uint16_t PROGMEM yh_rprn_combo[]       = {KC_Y, KC_H, COMBO_END};
+const uint16_t PROGMEM uj_lprn_combo[]       = {KC_U, KEY_J, COMBO_END};
 const uint16_t PROGMEM fv_lbrc_combo[]       = {KEY_F, KC_V, COMBO_END};
 const uint16_t PROGMEM gb_rbrc_combo[]       = {KC_G, KC_B, COMBO_END};
 const uint16_t PROGMEM fg_astr_combo[]       = {KEY_F, KC_G, COMBO_END};
@@ -272,20 +274,22 @@ const uint16_t PROGMEM arrow_ud_pgdn_combo[] = {KC_UP, KC_DOWN, COMBO_END};
 const uint16_t PROGMEM asdf_layer_combo[]    = {KEY_A, KEY_S, KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM wsps_layer_combo[]    = {KC_W, KEY_THUMB_L_2, COMBO_END};
 const uint16_t PROGMEM ji_e_combo[]          = {KEY_J, KC_I, COMBO_END};
-const uint16_t PROGMEM lm_r_combo[]          = {KC_L, KC_M, COMBO_END};
-const uint16_t PROGMEM jk_f_combo[]          = {KEY_J, KC_K, COMBO_END};
-const uint16_t PROGMEM lk_d_combo[]          = {KC_L, KC_K, COMBO_END};
+const uint16_t PROGMEM lm_r_combo[]          = {KEY_L, KC_M, COMBO_END};
+const uint16_t PROGMEM jk_f_combo[]          = {KEY_J, KEY_K, COMBO_END};
+const uint16_t PROGMEM lk_g_combo[]          = {KEY_L, KEY_K, COMBO_END};
 const uint16_t PROGMEM jo_q_combo[]          = {KEY_J, KC_O, COMBO_END};
-const uint16_t PROGMEM kdot_g_combo[]        = {KC_K, KC_DOT, COMBO_END};
-const uint16_t PROGMEM jl_s_combo[]          = {KEY_J, KC_L, COMBO_END};
+const uint16_t PROGMEM kdot_d_combo[]        = {KEY_K, KC_DOT, COMBO_END};
+const uint16_t PROGMEM jl_s_combo[]          = {KEY_J, KEY_L, COMBO_END};
 const uint16_t PROGMEM mcomma_x_combo[]      = {KC_M, KC_COMM, COMBO_END};
-const uint16_t PROGMEM jscln_a_combo[]       = {KEY_J, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM iscln_z_combo[]       = {KC_I, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM jscln_a_combo[]       = {KEY_J, KEY_SCLN, COMBO_END};
+const uint16_t PROGMEM iscln_z_combo[]       = {KC_I, KEY_SCLN, COMBO_END};
 const uint16_t PROGMEM dotcomma_c_combo[]    = {KC_DOT, KC_COMM, COMBO_END};
 const uint16_t PROGMEM oi_w_combo[]          = {KC_O, KC_I, COMBO_END};
 const uint16_t PROGMEM ui_t_combo[]          = {KC_U, KC_I, COMBO_END};
 const uint16_t PROGMEM mn_b_combo[]          = {KC_M, KC_N, COMBO_END};
 const uint16_t PROGMEM mdot_b_combo[]        = {KC_M, KC_DOT, COMBO_END};
+const uint16_t PROGMEM km_eql_combo[]        = {KEY_K, KC_M, COMBO_END};
+const uint16_t PROGMEM ko_unds_combo[]       = {KEY_K, KC_O, COMBO_END};
 
 combo_t key_combos[] = {
     [SDF_ENTER]     = COMBO(sdf_ent_combo, KC_ENT),
@@ -314,6 +318,8 @@ combo_t key_combos[] = {
     [DW_SLASH]      = COMBO(dw_slash_combo, KC_SLSH),
     [RF_LPRN]       = COMBO(rf_lprn_combo, KC_LPRN),
     [TG_RPRN]       = COMBO(tg_rprn_combo, KC_RPRN),
+    [YH_RPRN]       = COMBO(yh_rprn_combo, KC_RPRN),
+    [UJ_LPRN]       = COMBO(uj_lprn_combo, KC_LPRN),
     [FV_LBRC]       = COMBO(fv_lbrc_combo, KC_LBRC),
     [GB_RBRC]       = COMBO(gb_rbrc_combo, KC_RBRC),
     [FG_ASTR]       = COMBO(fg_astr_combo, KC_ASTR),
@@ -327,9 +333,9 @@ combo_t key_combos[] = {
     [UI_T]          = COMBO(ui_t_combo, KC_T),
     [JI_E]          = COMBO(ji_e_combo, KC_E),
     [LM_R]          = COMBO(lm_r_combo, KC_R),
-    [LK_D]          = COMBO(lk_d_combo, KC_D),
+    [LK_G]          = COMBO(lk_g_combo, KC_G),
     [JO_Q]          = COMBO(jo_q_combo, KC_Q),
-    [KDOT_G]        = COMBO(kdot_g_combo, KC_G),
+    [KDOT_D]        = COMBO(kdot_d_combo, KC_D),
     [JL_S]          = COMBO(jl_s_combo, KC_S),
     [MCOMMA_X]      = COMBO(mcomma_x_combo, KC_X),
     [JSCLN_A]       = COMBO(jscln_a_combo, KC_A),
@@ -338,6 +344,8 @@ combo_t key_combos[] = {
     [OI_W]          = COMBO(oi_w_combo, KC_W),
     [MN_B]          = COMBO(mn_b_combo, KC_B),
     [MDOT_V]        = COMBO(mdot_b_combo, KC_V),
+    [KM_EQL]        = COMBO(km_eql_combo, KC_EQL),
+    [KO_UNDS]       = COMBO(ko_unds_combo, KC_UNDS),
 };
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.
