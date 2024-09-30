@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_LSFT, KC_HASH, KC_LABK, KC_RABK, _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        _______, LCTL(KC_SPC), KC_DEL, _______, _______, _______
+        _______, LCTL(KC_SPC), KC_DEL, KC_DEL, LCTL(KC_SPC), _______
         //`--------------------------'  `--------------------------'
         ),
 
@@ -137,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         _______, _______, _______, _______, KC_QUOT, _______, _______, KC_QUOT, _______, _______, _______, _______,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        _______, LCTL(KC_BSLS), _______, _______, _______, _______
+        _______, LCTL(KC_BSLS), _______, _______, LCTL(KC_BSLS), _______
         //`------------------------'  `--------------------------'
         ),
 
@@ -213,8 +213,8 @@ enum combos {
 
     // right symbol combos
     KM_EQL,
-    KO_UNDS,
-    /* LU_MINS, */
+    LI_UNDS,
+    LU_MINS,
     /* OSCLN_COLN, */
     /* OU_PLUS, */
     UJ_LPRN,
@@ -289,7 +289,8 @@ const uint16_t PROGMEM ui_t_combo[]          = {KC_U, KC_I, COMBO_END};
 const uint16_t PROGMEM mn_b_combo[]          = {KC_M, KC_N, COMBO_END};
 const uint16_t PROGMEM mdot_b_combo[]        = {KC_M, KC_DOT, COMBO_END};
 const uint16_t PROGMEM km_eql_combo[]        = {KEY_K, KC_M, COMBO_END};
-const uint16_t PROGMEM ko_unds_combo[]       = {KEY_K, KC_O, COMBO_END};
+const uint16_t PROGMEM li_unds_combo[]       = {KEY_L, KC_I, COMBO_END};
+const uint16_t PROGMEM lu_mins_combo[]       = {KEY_L, KC_U, COMBO_END};
 
 combo_t key_combos[] = {
     [SDF_ENTER]     = COMBO(sdf_ent_combo, KC_ENT),
@@ -345,7 +346,8 @@ combo_t key_combos[] = {
     [MN_B]          = COMBO(mn_b_combo, KC_B),
     [MDOT_V]        = COMBO(mdot_b_combo, KC_V),
     [KM_EQL]        = COMBO(km_eql_combo, KC_EQL),
-    [KO_UNDS]       = COMBO(ko_unds_combo, KC_UNDS),
+    [LI_UNDS]       = COMBO(li_unds_combo, KC_UNDS),
+    [LU_MINS]       = COMBO(lu_mins_combo, KC_MINS),
 };
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.
