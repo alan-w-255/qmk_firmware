@@ -111,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_LCTL, KC_AT, KC_UP, KC_DOWN, _______, _______, _______, _______, KC_DOWN, KC_UP, KC_BSLS, KC_GRV,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_LSFT, KC_HASH, KC_LABK, KC_RABK, _______, _______, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
+        KC_LSFT, KC_HASH, KC_LABK, KC_RABK, _______, _______, KC_UNDS, KC_PLUS, KC_LABK, KC_RABK, KC_HASH, KC_TILD,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
         _______, LCTL(KC_SPC), KC_DEL, KC_DEL, LCTL(KC_SPC), _______
         //`--------------------------'  `--------------------------'
@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [4] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        _______, _______, KC_PERC, _______, KC_LCBR, KC_RCBR, _______, _______, _______, _______, _______, _______,
+        _______, _______, KC_PERC, _______, KC_LCBR, KC_RCBR, KC_RCBR, KC_LCBR, _______, KC_PERC, _______, _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         _______, KC_GRV, KC_BSLS, _______, OSM(MOD_LSFT), CW_TOGG, CW_TOGG, OSM(MOD_LSFT), _______, KC_BSLS, KC_GRV, _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -219,9 +219,9 @@ enum combos {
     OU_PLUS,
     UJ_LPRN,
     YH_RPRN,
-    /* JM_LBRC, */
-    /* HN_RBRC, */
-    /* JH_ASTR, */
+    JM_LBRC,
+    HN_RBRC,
+    JH_ASTR,
     /* UY_AMPR, */
     /* NJ_CIRC, */
 
@@ -291,6 +291,10 @@ const uint16_t PROGMEM mdot_b_combo[]        = {KC_M, KC_DOT, COMBO_END};
 const uint16_t PROGMEM km_eql_combo[]        = {KEY_K, KC_M, COMBO_END};
 const uint16_t PROGMEM li_unds_combo[]       = {KEY_L, KC_I, COMBO_END};
 const uint16_t PROGMEM lu_mins_combo[]       = {KEY_L, KC_U, COMBO_END};
+const uint16_t PROGMEM ou_plus_combo[]       = {KC_O, KC_U, COMBO_END};
+const uint16_t PROGMEM jm_lbrc_combo[]       = {KEY_J, KC_M, COMBO_END};
+const uint16_t PROGMEM hn_rbrc_combo[]       = {KC_H, KC_N, COMBO_END};
+const uint16_t PROGMEM jh_astr_combo[]       = {KEY_J, KC_H, COMBO_END};
 
 combo_t key_combos[] = {
     [SDF_ENTER]     = COMBO(sdf_ent_combo, KC_ENT),
@@ -348,6 +352,10 @@ combo_t key_combos[] = {
     [KM_EQL]        = COMBO(km_eql_combo, KC_EQL),
     [LI_UNDS]       = COMBO(li_unds_combo, KC_UNDS),
     [LU_MINS]       = COMBO(lu_mins_combo, KC_MINS),
+    [OU_PLUS]       = COMBO(ou_plus_combo, KC_PLUS),
+    [JM_LBRC]       = COMBO(jm_lbrc_combo, KC_LBRC),
+    [HN_RBRC]       = COMBO(hn_rbrc_combo, KC_RBRC),
+    [JH_ASTR]       = COMBO(jh_astr_combo, KC_ASTR),
 };
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.
