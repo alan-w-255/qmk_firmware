@@ -216,7 +216,7 @@ enum combos {
     LI_UNDS,
     LU_MINS,
     /* OSCLN_COLN, */
-    /* OU_PLUS, */
+    OU_PLUS,
     UJ_LPRN,
     YH_RPRN,
     /* JM_LBRC, */
