@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         _______, KC_EXLM, KC_LEFT, KC_RIGHT, KC_DLR, _______, _______, KC_DLR, KC_LEFT, KC_RIGHT, KC_EXLM, _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_LCTL, KC_AT, KC_UP, KC_DOWN, _______, _______, _______, _______, KC_DOWN, KC_UP, KC_BSLS, KC_GRV,
+        KC_LCTL, KC_AT, KC_UP, KC_DOWN, _______, _______, _______, _______, KC_DOWN, KC_UP, KC_AT, KC_GRV,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_LSFT, KC_HASH, KC_LABK, KC_RABK, _______, _______, KC_UNDS, KC_PLUS, KC_LABK, KC_RABK, KC_HASH, KC_TILD,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -154,7 +154,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, LCTL(KC_BSLS), _______, _______, _______, _______
         //`------------------------'  `--------------------------'
         ),
-
 };
 
 /* combos */
@@ -215,7 +214,7 @@ enum combos {
     KM_EQL,
     LI_UNDS,
     LU_MINS,
-    /* OSCLN_COLN, */
+    OSCLN_COLN,
     OU_PLUS,
     UJ_LPRN,
     YH_RPRN,
@@ -291,6 +290,7 @@ const uint16_t PROGMEM mdot_b_combo[]        = {KC_M, KC_DOT, COMBO_END};
 const uint16_t PROGMEM km_eql_combo[]        = {KEY_K, KC_M, COMBO_END};
 const uint16_t PROGMEM li_unds_combo[]       = {KEY_L, KC_I, COMBO_END};
 const uint16_t PROGMEM lu_mins_combo[]       = {KEY_L, KC_U, COMBO_END};
+const uint16_t PROGMEM oscln_coln_combo[]    = {KC_O, KEY_SCLN, COMBO_END};
 const uint16_t PROGMEM ou_plus_combo[]       = {KC_O, KC_U, COMBO_END};
 const uint16_t PROGMEM jm_lbrc_combo[]       = {KEY_J, KC_M, COMBO_END};
 const uint16_t PROGMEM hn_rbrc_combo[]       = {KC_H, KC_N, COMBO_END};
@@ -352,6 +352,7 @@ combo_t key_combos[] = {
     [KM_EQL]        = COMBO(km_eql_combo, KC_EQL),
     [LI_UNDS]       = COMBO(li_unds_combo, KC_UNDS),
     [LU_MINS]       = COMBO(lu_mins_combo, KC_MINS),
+    [OSCLN_COLN]    = COMBO(oscln_coln_combo, KC_COLN),
     [OU_PLUS]       = COMBO(ou_plus_combo, KC_PLUS),
     [JM_LBRC]       = COMBO(jm_lbrc_combo, KC_LBRC),
     [HN_RBRC]       = COMBO(hn_rbrc_combo, KC_RBRC),
