@@ -221,7 +221,7 @@ enum combos {
     JM_LBRC,
     HN_RBRC,
     JH_ASTR,
-    /* UY_AMPR, */
+    UY_AMPR,
     /* NJ_CIRC, */
 
     // layer switch combos
@@ -295,6 +295,7 @@ const uint16_t PROGMEM ou_plus_combo[]       = {KC_O, KC_U, COMBO_END};
 const uint16_t PROGMEM jm_lbrc_combo[]       = {KEY_J, KC_M, COMBO_END};
 const uint16_t PROGMEM hn_rbrc_combo[]       = {KC_H, KC_N, COMBO_END};
 const uint16_t PROGMEM jh_astr_combo[]       = {KEY_J, KC_H, COMBO_END};
+const uint16_t PROGMEM uy_ampr_combo[]       = {KC_U, KC_Y, COMBO_END};
 
 combo_t key_combos[] = {
     [SDF_ENTER]     = COMBO(sdf_ent_combo, KC_ENT),
@@ -357,6 +358,7 @@ combo_t key_combos[] = {
     [JM_LBRC]       = COMBO(jm_lbrc_combo, KC_LBRC),
     [HN_RBRC]       = COMBO(hn_rbrc_combo, KC_RBRC),
     [JH_ASTR]       = COMBO(jh_astr_combo, KC_ASTR),
+    [UY_AMPR]       = COMBO(uy_ampr_combo, KC_AMPR),
 };
 
 /* Return an integer that corresponds to what kind of tap dance should be executed.
