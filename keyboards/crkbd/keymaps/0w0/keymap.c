@@ -184,10 +184,10 @@ enum combos {
     JO_Q,
     KDOT_D,
     JL_S,
-    MCOMMA_X,
+    MCOMMA_C,
     JSCLN_A,
     ISCLN_Z,
-    DOTCOMMA_C,
+    DOTCOMMA_X,
     OI_W,
     MN_B,
     MDOT_V,
@@ -279,10 +279,10 @@ const uint16_t PROGMEM lk_g_combo[]          = {KEY_L, KEY_K, COMBO_END};
 const uint16_t PROGMEM jo_q_combo[]          = {KEY_J, KC_O, COMBO_END};
 const uint16_t PROGMEM kdot_d_combo[]        = {KEY_K, KC_DOT, COMBO_END};
 const uint16_t PROGMEM jl_s_combo[]          = {KEY_J, KEY_L, COMBO_END};
-const uint16_t PROGMEM mcomma_x_combo[]      = {KC_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM mcomma_c_combo[]      = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM jscln_a_combo[]       = {KEY_J, KEY_SCLN, COMBO_END};
 const uint16_t PROGMEM iscln_z_combo[]       = {KC_I, KEY_SCLN, COMBO_END};
-const uint16_t PROGMEM dotcomma_c_combo[]    = {KC_DOT, KC_COMM, COMBO_END};
+const uint16_t PROGMEM dotcomma_x_combo[]    = {KC_DOT, KC_COMM, COMBO_END};
 const uint16_t PROGMEM oi_w_combo[]          = {KC_O, KC_I, COMBO_END};
 const uint16_t PROGMEM ui_t_combo[]          = {KC_U, KC_I, COMBO_END};
 const uint16_t PROGMEM mn_b_combo[]          = {KC_M, KC_N, COMBO_END};
@@ -343,10 +343,10 @@ combo_t key_combos[] = {
     [JO_Q]          = COMBO(jo_q_combo, KC_Q),
     [KDOT_D]        = COMBO(kdot_d_combo, KC_D),
     [JL_S]          = COMBO(jl_s_combo, KC_S),
-    [MCOMMA_X]      = COMBO(mcomma_x_combo, KC_X),
+    [MCOMMA_C]      = COMBO(mcomma_c_combo, KC_C),
     [JSCLN_A]       = COMBO(jscln_a_combo, KC_A),
     [ISCLN_Z]       = COMBO(iscln_z_combo, KC_Z),
-    [DOTCOMMA_C]    = COMBO(dotcomma_c_combo, KC_C),
+    [DOTCOMMA_X]    = COMBO(dotcomma_x_combo, KC_X),
     [OI_W]          = COMBO(oi_w_combo, KC_W),
     [MN_B]          = COMBO(mn_b_combo, KC_B),
     [MDOT_V]        = COMBO(mdot_b_combo, KC_V),
