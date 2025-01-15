@@ -19,22 +19,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include <stdio.h>
 
-#define KEY_A LT(1, KC_A)
-#define KEY_S LT(5, KC_S)
-#define KEY_D LT(4, KC_D)
-#define KEY_F LT(2, KC_F)
+#define KEY_A LT(2, KC_A)
+#define KEY_S LT(6, KC_S)
+#define KEY_D LT(5, KC_D)
+#define KEY_F LT(3, KC_F)
 
-#define KEY_J LT(2, KC_J)
-#define KEY_K LT(4, KC_K)
-#define KEY_L LT(5, KC_L)
-#define KEY_SCLN LT(1, KC_SCLN)
+#define KEY_J LT(3, KC_J)
+#define KEY_K LT(5, KC_K)
+#define KEY_L LT(6, KC_L)
+#define KEY_SCLN LT(2, KC_SCLN)
 
 #define KEY_THUMB_L_1 LGUI_T(KC_BSPC)
 #define KEY_THUMB_L_2 LCTL_T(KC_SPC)
-#define KEY_THUMB_L_3 LALT_T(KC_LEFT)
+#define KEY_THUMB_L_3 KC_LALT
 #define KEY_THUMB_R_1 RGUI_T(KC_BSPC)
 #define KEY_THUMB_R_2 RCTL_T(KC_SPC)
-#define KEY_THUMB_R_3 RALT_T(KC_RGHT)
+#define KEY_THUMB_R_3 KC_RALT
 
 // quad function tab dance
 typedef struct {
@@ -92,8 +92,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //`--------------------------'  `--------------------------'
 
         ),
-
+    // 左右镜像
     [1] = LAYOUT_split_3x6_3(
+        //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+        KC_BSPC, KC_P, KC_O, KC_I, KC_U, KC_Y, KC_T, KC_R, KC_E, KC_W, KC_Q, KC_TAB,
+        //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+        KC_ESC, KEY_SCLN, KEY_L, KEY_K, KEY_J, KC_H, KC_G, KEY_F, KEY_D, KEY_S, KEY_A, KC_ESC,
+        //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+        KC_RSFT, KC_SLSH, KC_DOT, KC_COMM, KC_M, KC_N, KC_B, KC_V, KC_C, KC_X, KC_Z, KC_LSFT,
+        //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+        KEY_THUMB_R_3, KEY_THUMB_R_2, KEY_THUMB_R_1, KEY_THUMB_L_1, KEY_THUMB_L_2, KEY_THUMB_L_3
+        //`--------------------------'  `--------------------------'
+        ),
+    [2] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         _______, TO(0), KC_1, KC_2, KC_3, KC_MINS, KC_MINS, KC_3, KC_2, KC_1, TO(0), _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -105,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //`------------------------'  `--------------------------'
         ),
 
-    [2] = LAYOUT_split_3x6_3(
+    [3] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         _______, KC_EXLM, KC_LEFT, KC_RIGHT, KC_DLR, _______, _______, KC_DLR, KC_LEFT, KC_RIGHT, KC_EXLM, _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -113,11 +124,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         KC_LSFT, KC_HASH, KC_LABK, KC_RABK, _______, _______, KC_UNDS, KC_PLUS, KC_LABK, KC_RABK, KC_HASH, KC_TILD,
         //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-        _______, LCTL(KC_SPC), KC_DEL, KC_DEL, LCTL(KC_SPC), _______
+        KEY_THUMB_L_3, LCTL(KC_SPC), KC_DEL, KC_DEL, LCTL(KC_SPC), KEY_THUMB_R_3
         //`--------------------------'  `--------------------------'
         ),
 
-    [3] = LAYOUT_split_3x6_3(
+    [4] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         _______, TO(0), KC_F1, KC_F2, KC_F3, KC_F10, KC_F13, KC_F14, KC_F15, KC_F16, KC_F17, KC_F18,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -129,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         //`------------------------'  `--------------------------'
         ),
 
-    [4] = LAYOUT_split_3x6_3(
+    [5] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         _______, _______, KC_PERC, _______, KC_LCBR, KC_RCBR, KC_RCBR, KC_LCBR, _______, KC_PERC, _______, _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -142,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ),
 
     // 多媒体控制
-    [5] = LAYOUT_split_3x6_3(
+    [6] = LAYOUT_split_3x6_3(
         //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______, _______, _______, _______, _______, _______,
         //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -160,6 +171,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 enum combos {
     SDF_ENTER,
     JKL_ENTER,
+    WER_TO0,
     RG_TAB,
     UH_TAB,
     // alphas combos
@@ -237,6 +249,7 @@ uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this
 
 const uint16_t PROGMEM sdf_ent_combo[]       = {KEY_S, KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM jkl_ent_combo[]       = {KEY_J, KEY_K, KEY_L, COMBO_END};
+const uint16_t PROGMEM wer_to0_combo[]       = {KC_W, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM rg_tab_combo[]        = {KC_R, KC_G, COMBO_END};
 const uint16_t PROGMEM uh_tab_combo[]        = {KC_U, KC_H, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[]          = {KEY_F, KC_E, COMBO_END};
@@ -300,6 +313,7 @@ const uint16_t PROGMEM uy_ampr_combo[]       = {KC_U, KC_Y, COMBO_END};
 combo_t key_combos[] = {
     [SDF_ENTER]     = COMBO(sdf_ent_combo, KC_ENT),
     [JKL_ENTER]     = COMBO(jkl_ent_combo, KC_ENT),
+    [WER_TO0]       = COMBO(wer_to0_combo, TG(1)),
     [RG_TAB]        = COMBO(rg_tab_combo, KC_TAB),
     [UH_TAB]        = COMBO(uh_tab_combo, KC_TAB),
     [FE_I]          = COMBO(fe_i_combo, KC_I),
@@ -460,7 +474,7 @@ void td_spc_ctl_finished(tap_dance_state_t *state, void *user_data) {
             break;
         case DOUBLE_HOLD:
             register_code(KC_LCTL);
-            register_code(KC_LSFT);
+            register_code(KC_LALT);
             break;
         default:
             register_code(KC_SPC);
@@ -485,7 +499,7 @@ void td_spc_ctl_reset(tap_dance_state_t *state, void *user_data) {
             break;
         case DOUBLE_HOLD:
             unregister_code(KC_LCTL);
-            unregister_code(KC_LSFT);
+            unregister_code(KC_LALT);
             break;
         default:
             unregister_code(KC_SPC);
