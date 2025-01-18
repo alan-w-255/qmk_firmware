@@ -171,7 +171,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 enum combos {
     SDF_ENTER,
     JKL_ENTER,
-    WER_TO0,
+    UIO_TO0,
     RG_TAB,
     UH_TAB,
     // alphas combos
@@ -249,7 +249,7 @@ uint16_t COMBO_LEN = COMBO_LENGTH; // remove the COMBO_COUNT define and use this
 
 const uint16_t PROGMEM sdf_ent_combo[]       = {KEY_S, KEY_D, KEY_F, COMBO_END};
 const uint16_t PROGMEM jkl_ent_combo[]       = {KEY_J, KEY_K, KEY_L, COMBO_END};
-const uint16_t PROGMEM wer_to0_combo[]       = {KC_W, KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM uio_to0_combo[]       = {KC_U, KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM rg_tab_combo[]        = {KC_R, KC_G, COMBO_END};
 const uint16_t PROGMEM uh_tab_combo[]        = {KC_U, KC_H, COMBO_END};
 const uint16_t PROGMEM fe_i_combo[]          = {KEY_F, KC_E, COMBO_END};
@@ -313,7 +313,7 @@ const uint16_t PROGMEM uy_ampr_combo[]       = {KC_U, KC_Y, COMBO_END};
 combo_t key_combos[] = {
     [SDF_ENTER]     = COMBO(sdf_ent_combo, KC_ENT),
     [JKL_ENTER]     = COMBO(jkl_ent_combo, KC_ENT),
-    [WER_TO0]       = COMBO(wer_to0_combo, TG(1)),
+    [UIO_TO0]       = COMBO(uio_to0_combo, TG(1)),
     [RG_TAB]        = COMBO(rg_tab_combo, KC_TAB),
     [UH_TAB]        = COMBO(uh_tab_combo, KC_TAB),
     [FE_I]          = COMBO(fe_i_combo, KC_I),
